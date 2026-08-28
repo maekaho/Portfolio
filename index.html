@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PORTFOLIO | [学生の名前]</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ヘッダー / 簡易ナビ -->
+  <header class="header">
+    <div class="container header-inner">
+      <nav class="nav">
+        <a href="#profile">Profile</a>
+        <a href="#works">Works</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- メインビジュアル / プロフィールへの導線 -->
+  <section id="profile" class="hero-section">
+    <div class="container">
+      <p class="sub-title">Game Programmer Portfolio</p>
+      <h2>[学生の名前]</h2>
+      <p class="hero-bio">（サンプルコメント）国際電子ビジネス専門学校でゲームプログラミングを専攻<br>しています。C++を使った開発が得意です。</p>
+    </div>
+  </section>
+
+  <!-- 作品一覧（各作品の個別ページへ飛ばす） -->
+  <section id="works" class="section">
+    <div class="container">
+      <h2>Works</h2>
+      <div class="works-grid">
+
+        <!-- 作品1 -->
+        <article class="works-card">
+          <div class="thumbnail">
+            <img src="" alt="作品1サムネイル">
+          </div>
+          <div class="works-body">
+            <span class="tag">（サンプル）C++ / 自作エンジン</span>
+            <h3>（サンプル）3Dハイスピードアクション<br>『タイトル』</h3>
+            <p>（サンプル）自作エンジンによる衝突判定の高速化とキャラクター制御を実装。</p>
+            <a href="projects/project1.html" class="btn-link">作品の詳細を見る &rarr;</a>
+          </div>
+        </article>
+
+        <!-- 作品2 -->
+        <article class="works-card">
+          <div class="thumbnail">
+            <img src="" alt="作品2サムネイル">
+          </div>
+          <div class="works-body">
+            <span class="tag">（サンプル）Unity / C#</span>
+            <h3>（サンプル）協力プレイ対応パズル<br>『タイトル』</h3>
+            <p>（サンプル）チーム開発でのメインプログラム、状態管理（StatePattern）を担当。</p>
+
+            <a href="projects/project2.html" class="btn-link">作品の詳細を見る &rarr;</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 [学生の名前]. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

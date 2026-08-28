@@ -1,0 +1,186 @@
+@charset "UTF-8";
+
+/* グローバル変数設定 */
+:root {
+  --bg-color: #edecf3;      /* 全体の背景色 */
+  --card-bg: #ffffff;       /* カードやパネルの背景色 */
+  --text-main: #222222;     /* メイン文字色 */
+  --text-sub: #a78bfa;      /* サブ文字色 */
+  --accent-color: #e879f9;  /* アクセントカラー */
+  --border-color: #3b2d54;  /* 枠線・区切り線の色 */
+  --max-width: 960px;         /* 画面の最大横幅 */
+}
+
+/* CSSの初期化（意図しないずれを防ぐため） */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.container h2 {
+ color: var(--accent-color);
+}
+
+/* ヘッダー */
+.header {
+  position: sticky;        /* スクロールしても上部に固定される */
+  top: 0;                  /* 画面の一番上 */
+  background-color: var(--bg-color); /* 背景色をつけて透け防止 */
+  z-index: 100;            /* 他の要素より前面に表示 */
+  padding: 15px 0;
+}
+
+/* ナビゲーションを右寄せにする */
+.nav {
+  text-align: right;       /* 右側に寄せる */
+}
+
+/* リンク同士の間隔と見た目 */
+.nav a {
+  color: var(--text-sub);
+  text-decoration: none;
+  margin-left: 20px;       /* Profile と Works の間に間隔を作る */
+  font-size: 0.95rem;
+}
+
+.nav a:hover {
+  color: var(--accent-color); /* マウスを乗せた時にテーマカラーにする */
+}
+
+/* スクロール移動をヌルッとスムーズにするおまじない */
+html {
+  scroll-behavior: smooth;
+}
+
+/* メインビジュアル */
+.hero-section {
+  padding: 60px 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.sub-title {
+  color: var(--accent-color);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.hero-section h2 {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+}
+
+.hero-bio {
+  color: var(--text-main);
+  max-width: 600px;
+  margin-bottom: 25px;
+}
+
+/* ボタン */
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: opacity 0.2s;
+}
+
+.btn-primary {
+  background-color: var(--accent-color);
+  color: #000;
+  font-weight: 600;
+}
+
+.btn:hover {
+  opacity: 0.85;
+}
+
+/* セクション */
+.section {
+  padding: 50px 0;
+}
+
+.section h2 {
+  font-size: 1.6rem;
+  margin-bottom: 30px;
+}
+
+/* 作品カードグリッド */
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.works-card {
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.thumbnail img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+}
+
+.works-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.tag {
+  font-size: 0.8rem;
+  color: var(--accent-color);
+  font-weight: 600;
+}
+
+.works-body h3 {
+  font-size: 1.1rem;
+  margin: 5px 0 10px;
+}
+
+.works-body p {
+  color: var(--text-main);
+  font-size: 0.85rem;
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+.btn-link {
+  color: var(--accent-color);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.btn-link:hover {
+  text-decoration: underline;
+}
+
+.footer {
+  padding: 30px 0;
+  text-align: center;
+  color: var(--text-sub);
+  font-size: 0.8rem;
+  border-top: 1px solid var(--border-color);
+}
