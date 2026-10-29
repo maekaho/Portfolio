@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        玉転がし
+    </title>
+    <link rel="stylesheet" href="../css/work2_01.css" >
+</head>
+<body>
+<nav style="padding:12px 18px;max-width:1100px;margin:auto;"><a href="../index.html">← 作品一覧へ戻る</a></nav>
+
+    <div class="top">
+        <h1>
+            玉転がし
+        </h1>
+    </div>
+
+    <div class="overview">
+        <h2>
+            作品概要
+        </h2>
+        <p>
+            3D空間上に球体を動かすミニゲーム<br>
+            単純にWASDで移動することができる。<br>
+        </p>
+
+        <img src="../images/work2_02/玉転がし.png" alt="タイトル画面とゲームメイン画面" width="769" height="446">
+        
+    </div>
+
+    <div class="detail">
+        <h3>
+            開発環境・使用言語
+        </h3>
+        <p>
+            C++（DirectX12使用）
+        </p>
+        <h3>
+            製作期間
+        </h3>
+        <p>
+            2025/10/07～2025/12/05
+        </p>
+        <h3>
+            製作人数
+        </h3>
+        <p>
+            １人
+        </p>
+        
+
+    </div>
+
+    <hr>
+
+    <div class="reason">
+        <h2>
+            製作背景
+        </h2>
+        <p>
+            3Dゲームを作ったことがなかったので何か作らなければと思ったため。<br>
+            教科書を片手に一から学び始めてモデルの描画とテクスチャの貼り付けまで出来た後に作成。<br>
+            <a href="https://www.shoeisha.co.jp/book/detail/9784798161938">教科書はこれを使用</a>
+        </p>
+    </div>
+
+    <hr>
+
+    <div class="ingenuity">
+        <h2>
+            挑戦したこと
+        </h2>
+        <h3>
+            球体をプログラムで作成
+        </h3>
+        <p>
+           教科書ではbmpの形式でのモデル描画のみしか学んでいなかったので<br>
+           球体を作るプログラムを作りました。縞模様のテクスチャも作成しました。
+           下記コードは球体生成プログラムです。
+        </p>
+        <pre>
+            <code>
+void CreateSphere(float radius, int latDiv, int lonDiv, vector<PMD_VERTEX>& outVerts, vector<unsigned short>& outIdx) {
+    outVerts.clear();
+    outIdx.clear();
+    //上から点をうつ
+    for (int lat = 0; lat <= latDiv; ++lat) {
+        float v = (float)lat / (float)latDiv;
+        float theta = v * XM_PI;
+        //水平方向で球体を回るようにする
+        for (int lon = 0; lon <= lonDiv; ++lon) {
+            float u = (float)lon / (float)lonDiv;
+            float phi = u * XM_2PI;
+            float x = sinf(theta) * cosf(phi);
+            float y = cosf(theta);
+
+            float z = sinf(theta) * sinf(phi);
+            PMD_VERTEX vx{};
+            vx.pos = XMFLOAT3(x * radius, y * radius, z * radius);
+            vx.normal = XMFLOAT3(x, y, z);
+            vx.uv = XMFLOAT2(u, v);
+            vx.bone_no[0] = vx.bone_no[1] = 0;
+            vx.weight = 0; vx.EdgeFlag = 0; vx.dummy = 0;
+            outVerts.push_back(vx);
+        }
+    }
+
+    //点の集まりをポリゴンでくっつけて埋める
+    for (int lat = 0; lat < latDiv; ++lat) {
+        for (int lon = 0; lon < lonDiv; ++lon) {
+            int cur = lat * (lonDiv + 1) + lon;
+            int next = (lat + 1) * (lonDiv + 1) + lon;
+            outIdx.push_back((unsigned short)cur);
+            outIdx.push_back((unsigned short)next);
+            outIdx.push_back((unsigned short)(cur + 1));
+            outIdx.push_back((unsigned short)(cur + 1));
+            outIdx.push_back((unsigned short)next);
+            outIdx.push_back((unsigned short)(next + 1));
+        }
+    }
+}
+            </code>
+        </pre>
+
+        <h3>
+            グラフィックスパイプラインの構築
+        </h3>
+        <p>
+           3Dゲームを作るとなるとUnityやUnrealを使うことが多いので<br>
+           隠されている描画がどういうものなのかを知るためにやりました。
+           下記のコードはその構築の一部分です。
+        </p>
+        <pre>
+            <code>
+//シェーダーのコンパイル
+ComPtr<ID3DBlob> vsBlob, psBlob;
+if (FAILED(CompileShader(L"BasicVertexShader.hlsl", "BasicVS", "vs_5_0", &vsBlob))) return E_FAIL;
+if (FAILED(CompileShader(L"BasicPixelShader.hlsl", "BasicPS", "ps_5_0", &psBlob))) return E_FAIL;
+   
+
+// 入力レイアウト定義
+D3D12_INPUT_ELEMENT_DESC inputLayout[] = {
+    { "POSITION",0,DXGI_FORMAT_R32G32B32_FLOAT,0, D3D12_APPEND_ALIGNED_ELEMENT, D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA,0 },
+    { "NORMAL",0,DXGI_FORMAT_R32G32B32_FLOAT,0, D3D12_APPEND_ALIGNED_ELEMENT, D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA,0 },
+    { "TEXCOORD",0,DXGI_FORMAT_R32G32_FLOAT,0, D3D12_APPEND_ALIGNED_ELEMENT, D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA,0 }
+};
+
+//パイプラインステートの作成
+D3D12_GRAPHICS_PIPELINE_STATE_DESC psoDesc = {};
+psoDesc.InputLayout = { inputLayout, _countof(inputLayout) };
+psoDesc.pRootSignature = g_rootSig;
+psoDesc.VS = { vsBlob->GetBufferPointer(), vsBlob->GetBufferSize() };
+psoDesc.PS = { psBlob->GetBufferPointer(), psBlob->GetBufferSize() };
+psoDesc.RasterizerState = CD3DX12_RASTERIZER_DESC(D3D12_DEFAULT);
+psoDesc.BlendState = CD3DX12_BLEND_DESC(D3D12_DEFAULT);
+psoDesc.DepthStencilState = CD3DX12_DEPTH_STENCIL_DESC(D3D12_DEFAULT);
+psoDesc.SampleMask = UINT_MAX;
+psoDesc.PrimitiveTopologyType = D3D12_PRIMITIVE_TOPOLOGY_TYPE_TRIANGLE;
+psoDesc.NumRenderTargets = 1;
+psoDesc.RTVFormats[0] = DXGI_FORMAT_R8G8B8A8_UNORM;
+psoDesc.DSVFormat = DXGI_FORMAT_D32_FLOAT;
+psoDesc.SampleDesc.Count = 1;
+
+psoDesc.VS = { vsBlob->GetBufferPointer(), vsBlob->GetBufferSize() };
+psoDesc.PS = { psBlob->GetBufferPointer(), psBlob->GetBufferSize() };
+g_dev->CreateGraphicsPipelineState(&psoDesc, IID_PPV_ARGS(&g_pso));
+            </code>
+        </pre>
+
+        <h3>
+            リソースバリアと同期処理
+        </h3>
+        <p>
+           エンジンやただのプログラムではなかなか意識することがない<br>
+           FenceによるCPUとGPUの同期、Resource Barrierによるリソース状態遷移を実装しました。
+            一つ目は描画前後のリソース状態の遷移、二つ目はGPU側の処理完了を待つ同期の例です。
+        </p>
+        <pre>
+            <code>
+/*--------Resource Barrier--------------*/
+//描画開始前
+auto barrier = CD3DX12_RESOURCE_BARRIER::Transition(g_backBuffers[bbIdx], D3D12_RESOURCE_STATE_PRESENT, D3D12_RESOURCE_STATE_RENDER_TARGET);
+g_cmdList->ResourceBarrier(1, &barrier);
+
+ /*--------ClearやDrawなどを実行-------*/
+
+ //描画終了後
+barrier = CD3DX12_RESOURCE_BARRIER::Transition(g_backBuffers[bbIdx], D3D12_RESOURCE_STATE_RENDER_TARGET, D3D12_RESOURCE_STATE_PRESENT);
+g_cmdList->ResourceBarrier(1, &barrier);
+
+/*-------------Fence-------------------*/
+// GPUにシグナル送信コマンドを発行
+g_cmdQueue->Signal(g_fence, g_fenceVal);
+
+// GPUがここまで処理を終えたかチェック
+if (g_fence->GetCompletedValue() != g_fenceVal) {
+    // まだ終わっていなければイベントを作成して待機
+    HANDLE ev = CreateEvent(nullptr, FALSE, FALSE, nullptr);
+    g_fence->SetEventOnCompletion(g_fenceVal, ev);
+    WaitForSingleObject(ev, INFINITE); // CPUはここで停止して待つ
+    CloseHandle(ev);
+}
+// ここで初めてコマンドアロケータをリセット可能になる
+g_cmdAlloc->Reset();
+            </code>
+        </pre>
+
+
+    </div>
+    
+    <hr>
+
+    <div class="learn">
+        <h2>
+            学んだこと
+        </h2>
+        <p>
+            球体メッシュの頂点生成、描画パイプライン、リソース状態遷移、GPU同期処理を実装し、ゲームエンジンが通常隠蔽している描画処理の基礎を学びました。
+        </p>
+    </div>
+</body>
+</html>

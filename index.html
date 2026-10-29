@@ -1,74 +1,24 @@
 <!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PORTFOLIO | [学生の名前]</title>
-  <link rel="stylesheet" href="style.css">
-</head>
+
+<html lang="ja"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="ゲーム制作と技術学習のポートフォリオ。企画・仕様改善、数値設計、短期チーム開発、3D描画技術の学習記録。" name="description"/>
+<title>Portfolio | ゲーム制作・技術作品</title><link href="css/toppage.css" rel="stylesheet"/></head>
 <body>
-
-  <!-- ヘッダー / 簡易ナビ -->
-  <header class="header">
-    <div class="container header-inner">
-      <nav class="nav">
-        <a href="#profile">Profile</a>
-        <a href="#works">Works</a>
-      </nav>
-    </div>
-  </header>
-
-  <!-- メインビジュアル / プロフィールへの導線 -->
-  <section id="profile" class="hero-section">
-    <div class="container">
-      <p class="sub-title">Game Programmer Portfolio</p>
-      <h2>[学生の名前]</h2>
-      <p class="hero-bio">（サンプルコメント）国際電子ビジネス専門学校でゲームプログラミングを専攻<br>しています。C++を使った開発が得意です。</p>
-    </div>
-  </section>
-
-  <!-- 作品一覧（各作品の個別ページへ飛ばす） -->
-  <section id="works" class="section">
-    <div class="container">
-      <h2>Works</h2>
-      <div class="works-grid">
-
-        <!-- 作品1 -->
-        <article class="works-card">
-          <div class="thumbnail">
-            <img src="" alt="作品1サムネイル">
-          </div>
-          <div class="works-body">
-            <span class="tag">（サンプル）C++ / 自作エンジン</span>
-            <h3>（サンプル）3Dハイスピードアクション<br>『タイトル』</h3>
-            <p>（サンプル）自作エンジンによる衝突判定の高速化とキャラクター制御を実装。</p>
-            <a href="projects/project1.html" class="btn-link">作品の詳細を見る &rarr;</a>
-          </div>
-        </article>
-
-        <!-- 作品2 -->
-        <article class="works-card">
-          <div class="thumbnail">
-            <img src="" alt="作品2サムネイル">
-          </div>
-          <div class="works-body">
-            <span class="tag">（サンプル）Unity / C#</span>
-            <h3>（サンプル）協力プレイ対応パズル<br>『タイトル』</h3>
-            <p>（サンプル）チーム開発でのメインプログラム、状態管理（StatePattern）を担当。</p>
-
-            <a href="projects/project2.html" class="btn-link">作品の詳細を見る &rarr;</a>
-          </div>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <footer class="footer">
-    <div class="container">
-      <p>&copy; 2026 [学生の名前]. All Rights Reserved.</p>
-    </div>
-  </footer>
-
-</body>
-</html>
+<header class="hero"><div class="wrap"><p class="kicker">PORTFOLIO / 2028 GRADUATE</p><h1>ゲーム制作・技術作品</h1>
+<p>ゲームプランナー／ゲームプログラマー志望。チーム制作では企画・仕様設計・調整を中心に、技術作品では描画や実装の仕組みを学んでいます。</p>
+<nav aria-label="ページ内リンク" class="nav"><a href="#games">ゲーム制作</a><a href="#technical">技術作品</a></nav></div></header>
+<main class="wrap">
+<section class="section" id="games"><div class="section-head"><div><p class="eyebrow">GAME DEVELOPMENT</p><h2>ゲーム制作</h2></div><p class="section-descr">完成作品・短期制作を通して、企画・仕様判断・実装の経験を紹介します。</p></div>
+<div class="cards">
+<article class="work featured"><a class="visual" href="site/renkincrush.html"><img alt="RENKINcrush タイトル画面" src="images/renkincrush/renkincrush_title.png"/></a><div class="work-body"><p class="meta">代表作品 ｜ チーム制作</p><h3>RENKINcrush</h3><p>連鎖を中心に据えたパズルと5種類のミニゲーム。旧仕様の再設計、ChainCheck・Swapの提案と実装、試遊後の改善を紹介します。</p><a href="site/renkincrush.html">制作内容・改善過程を見る</a></div></article>
+<article class="work featured"><a class="visual" href="site/work2_01.html"><img alt="破戒僧サバイバーの画面" src="images/work2_01/タイトル画面.png"/></a><div class="work-body"><p class="meta">代表作品 ｜ 4人チーム</p><h3>破戒僧サバイバー</h3><p>敵から生き残る2Dサバイバー系ゲーム。武器の威力・CT、敵HP・出現間隔の調整など、数値設計と難易度の考え方を紹介します。</p><a href="site/work2_01.html">制作内容・数値設計を見る</a></div></article>
+<article class="work"><a class="visual" href="site/draw_or_die.html"><img alt="Draw or Die。実際のゲーム画面ではなく作品名を示す仮サムネイル" src="images/placeholders/draw_or_die.png"/></a><div class="work-body"><p class="meta">1年次ゲームジャム ｜ チーム制作</p><h3>Draw or Die</h3><p>合図を見て先に正しいボタンを入力する2人対戦ゲーム。企画と操作部分を担当しました。</p><a href="site/draw_or_die.html">制作内容を見る</a></div></article>
+<article class="work"><a class="visual" href="site/gamejam_teamk.html"><img alt="雨天の迷宮のタイトル画面用画像" src="images/gamejam_teamk/title.png"/></a><div class="work-body"><p class="meta">2年次ゲームジャム ｜ チーム制作</p><h3>雨天の迷宮</h3><p>敵の巡回や追跡を避け、傘を探して回収するゲーム。3種類のマップ選定、ステージ制作、遠景と近景の雨演出を担当しました。</p><a href="site/gamejam_teamk.html">制作内容を見る</a></div></article>
+</div></section>
+<section class="section" id="technical"><div class="section-head"><div><p class="eyebrow">TECHNICAL PROJECTS</p><h2>技術作品</h2></div><p class="section-descr">完成ゲームとは分けて、描画処理やプログラミングの学習成果を掲載します。</p></div>
+<div class="cards">
+<article class="work"><a class="visual" href="site/work2_02.html"><img alt="DirectX 12による玉転がしの実際の画面" src="images/work2_02/玉転がし.png"/></a><div class="work-body"><p class="meta">個人学習 ｜ C++ / DirectX 12</p><h3>玉転がし（DirectX 12）</h3><p>球体メッシュ生成、描画パイプライン構築、リソースバリアやGPU同期処理を学習しました。</p><a href="site/work2_02.html">技術内容を見る</a></div></article>
+<article class="work"><a class="visual" href="site/opengl.html"><img alt="OpenGL学習作品。実際の描画画面ではなく内容を示す仮サムネイル" src="images/placeholders/opengl.png"/></a><div class="work-body"><p class="meta">学習作品 ｜ C++ / OpenGL</p><h3>OpenGL 3D描画・操作実験</h3><p>OBJ読込用ヘッダ、テクスチャ読み込み、クォータニオン演算などを主に自作。3D描画と操作を学んだ技術作品です。</p><a href="site/opengl.html">技術内容を見る</a></div></article>
+</div></section>
+</main><footer class="footer"><div class="wrap">チーム制作の担当範囲は各作品ページに記載しています。作品資料・実行ファイルは公開範囲を確認して整備中です。</div></footer>
+</body></html>

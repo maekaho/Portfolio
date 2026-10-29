@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 970 415" role="img" aria-labelledby="charttitle chartdesc">
+<title id="charttitle">企画時に比較した敵HP試算の2案</title>
+<desc id="chartdesc">βが0.05と0.02の試算。0秒で共にHP6、60秒で共にHP10。300秒ではβ0.05が75.33、β0.02が68.99。完成版のHPではない。</desc>
+<rect width="970" height="415" fill="#ffffff" rx="14"/>
+<rect x="88.0" y="38" width="169.0" height="310" fill="#f6f2f8"/>
+<line x1="88" y1="348.00" x2="933" y2="348.00" stroke="#e7e2e9" stroke-width="1"/>
+<text x="70" y="353.00" text-anchor="end" fill="#6b6570" font-size="14">0</text>
+<line x1="88" y1="275.06" x2="933" y2="275.06" stroke="#e7e2e9" stroke-width="1"/>
+<text x="70" y="280.06" text-anchor="end" fill="#6b6570" font-size="14">20</text>
+<line x1="88" y1="202.12" x2="933" y2="202.12" stroke="#e7e2e9" stroke-width="1"/>
+<text x="70" y="207.12" text-anchor="end" fill="#6b6570" font-size="14">40</text>
+<line x1="88" y1="129.18" x2="933" y2="129.18" stroke="#e7e2e9" stroke-width="1"/>
+<text x="70" y="134.18" text-anchor="end" fill="#6b6570" font-size="14">60</text>
+<line x1="88" y1="56.24" x2="933" y2="56.24" stroke="#e7e2e9" stroke-width="1"/>
+<text x="70" y="61.24" text-anchor="end" fill="#6b6570" font-size="14">80</text>
+<line x1="88.00" y1="38" x2="88.00" y2="348" stroke="#eeeaf1" stroke-width="1"/>
+<text x="88.00" y="374" text-anchor="middle" fill="#6b6570" font-size="14">0</text>
+<line x1="257.00" y1="38" x2="257.00" y2="348" stroke="#eeeaf1" stroke-width="1"/>
+<text x="257.00" y="374" text-anchor="middle" fill="#6b6570" font-size="14">60</text>
+<line x1="426.00" y1="38" x2="426.00" y2="348" stroke="#eeeaf1" stroke-width="1"/>
+<text x="426.00" y="374" text-anchor="middle" fill="#6b6570" font-size="14">120</text>
+<line x1="595.00" y1="38" x2="595.00" y2="348" stroke="#eeeaf1" stroke-width="1"/>
+<text x="595.00" y="374" text-anchor="middle" fill="#6b6570" font-size="14">180</text>
+<line x1="764.00" y1="38" x2="764.00" y2="348" stroke="#eeeaf1" stroke-width="1"/>
+<text x="764.00" y="374" text-anchor="middle" fill="#6b6570" font-size="14">240</text>
+<line x1="933.00" y1="38" x2="933.00" y2="348" stroke="#eeeaf1" stroke-width="1"/>
+<text x="933.00" y="374" text-anchor="middle" fill="#6b6570" font-size="14">300</text>
+<line x1="88" y1="348" x2="933" y2="348" stroke="#aaa1af" stroke-width="1.2"/>
+<text x="933" y="399" text-anchor="end" fill="#66606b" font-size="13">設計上の経過時間（秒）</text>
+<text x="88" y="20" fill="#66606b" font-size="13">敵HP（試算値）</text>
+<polyline points="88.00,326.12 172.50,318.82 257.00,311.53 341.50,261.09 426.00,232.42 510.50,204.49 595.00,177.14 679.50,150.22 764.00,124.00 848.50,98.40 933.00,73.27" fill="none" stroke="#71488c" stroke-width="3.5"  stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="88.00" cy="326.12" r="4" fill="white" stroke="#71488c" stroke-width="2"/>
+<circle cx="172.50" cy="318.82" r="4" fill="white" stroke="#71488c" stroke-width="2"/>
+<circle cx="257.00" cy="311.53" r="4" fill="white" stroke="#71488c" stroke-width="2"/>
+<circle cx="341.50" cy="261.09" r="4" fill="white" stroke="#71488c" stroke-width="2"/>
+<circle cx="426.00" cy="232.42" r="4" fill="white" stroke="#71488c" stroke-width="2"/>
+<circle cx="510.50" cy="204.49" r="4" fill="white" stroke="#71488c" stroke-width="2"/>
+<circle cx="595.00" cy="177.14" r="4" fill="white" stroke="#71488c" stroke-width="2"/>
+<circle cx="679.50" cy="150.22" r="4" fill="white" stroke="#71488c" stroke-width="2"/>
+<circle cx="764.00" cy="124.00" r="4" fill="white" stroke="#71488c" stroke-width="2"/>
+<circle cx="848.50" cy="98.40" r="4" fill="white" stroke="#71488c" stroke-width="2"/>
+<circle cx="933.00" cy="73.27" r="4" fill="white" stroke="#71488c" stroke-width="2"/>
+<text x="928.00" y="60.27" text-anchor="end" fill="#71488c" font-size="16" font-weight="700">75.33</text>
+<polyline points="88.00,326.12 172.50,318.82 257.00,311.53 341.50,282.21 426.00,253.36 510.50,226.22 595.00,199.38 679.50,172.98 764.00,147.01 848.50,121.48 933.00,96.39" fill="none" stroke="#16818d" stroke-width="3.5" stroke-dasharray="10 5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="88.00" cy="326.12" r="4" fill="white" stroke="#16818d" stroke-width="2"/>
+<circle cx="172.50" cy="318.82" r="4" fill="white" stroke="#16818d" stroke-width="2"/>
+<circle cx="257.00" cy="311.53" r="4" fill="white" stroke="#16818d" stroke-width="2"/>
+<circle cx="341.50" cy="282.21" r="4" fill="white" stroke="#16818d" stroke-width="2"/>
+<circle cx="426.00" cy="253.36" r="4" fill="white" stroke="#16818d" stroke-width="2"/>
+<circle cx="510.50" cy="226.22" r="4" fill="white" stroke="#16818d" stroke-width="2"/>
+<circle cx="595.00" cy="199.38" r="4" fill="white" stroke="#16818d" stroke-width="2"/>
+<circle cx="679.50" cy="172.98" r="4" fill="white" stroke="#16818d" stroke-width="2"/>
+<circle cx="764.00" cy="147.01" r="4" fill="white" stroke="#16818d" stroke-width="2"/>
+<circle cx="848.50" cy="121.48" r="4" fill="white" stroke="#16818d" stroke-width="2"/>
+<circle cx="933.00" cy="96.39" r="4" fill="white" stroke="#16818d" stroke-width="2"/>
+<text x="928.00" y="119.39" text-anchor="end" fill="#16818d" font-size="16" font-weight="700">68.99</text>
+<text x="178.13" y="58" text-anchor="middle" fill="#75677d" font-size="13">初期調整</text>
+</svg>
