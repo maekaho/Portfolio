@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="ja">
 <head>
 <meta charset="utf-8"/>
@@ -82,11 +81,11 @@
 <div class="section-heading"><p class="eyebrow">04 / IMPLEMENTATION</p><h2>現行ソースではHPを段階化</h2><p>GitHubの <code>EnemyBase::SetHitPoint()</code> を確認すると、相談時のβモデルとは別の計算式を使い、敵HPを6段階に分けています。</p></div>
 <div class="implementation-layout">
 <figure class="code-image surface"><img alt="EnemyBase::SetHitPointのコード。時間をもとにenemynumberを計算し、値の範囲で敵HPと画像を切り替えている。" loading="lazy" src="../images/work2_01/工夫HP.png"/><figcaption>HP段階分けを実装したC++コードの一部（本人の制作資料から）</figcaption></figure>
-<div class="surface impl-summary"><p class="minor">GitHubのmainで確認したHP区分</p><div aria-label="HPは10、20、30、40、50、60の6段階" class="hp-bands"><span>10</span><span>20</span><span>30</span><span>40</span><span>50</span><span>60</span></div><h3>HPと見た目を連動</h3><p>途中の段階を10刻みとし、段階に対応する敵画像を切り替えています。</p><p>同じ外見の敵を同じ攻撃回数で倒せないと違和感があるという指摘を受け、数値だけでなく見た目の分かりやすさも考慮しました。</p></div>
+<div class="surface impl-summary"><p class="minor">実装されている敵HPの段階</p><div aria-label="HPは10、20、30、40、50、60の6段階" class="hp-bands"><span>10</span><span>20</span><span>30</span><span>40</span><span>50</span><span>60</span></div><h3>HPと見た目を連動</h3><p>途中の段階を10刻みとし、段階に対応する敵画像を切り替えています。</p><p>同じ外見の敵を同じ攻撃回数で倒せないと違和感があるという指摘を受け、数値だけでなく見た目の分かりやすさも考慮しました。</p></div>
 </div>
 <div class="note"><strong>試算と実装の差：</strong>β=0.02／0.05の式はそのまま使われていません。また、ソースの序盤用の式には整数除算があり、意図した「HP6→10」の連続増加にはなっていません。したがって、試算のHP曲線を完成版の成果として掲載しません。</div>
 <h3 class="subhead">武器性能も、企画時から調整</h3>
-<p class="small-intro">下表は設計表の初期値と、GitHubの各武器クラス <code>SetStatus()</code> のLv.1設定を照合したものです。これは調整履歴を直接復元した表ではなく、異なる時点の資料比較です。</p>
+<p class="small-intro">下表は設計表の初期値と、実装時の各武器クラス <code>SetStatus()</code> のLv.1設定を照合したものです。これは調整履歴を直接復元した表ではなく、異なる時点の資料比較です。</p>
 <div class="table-scroll"><table><thead><tr><th scope="col">武器</th><th scope="col">企画時（Excel）</th><th scope="col">GitHub mainのLv.1</th><th scope="col">確認できる変更</th></tr></thead><tbody>
 <tr><th scope="row">鞭</th><td>威力10 / CT 2秒</td><td>威力10 / CT 2秒</td><td>基礎値は共通</td></tr>
 <tr><th scope="row">杖</th><td>威力3 / CT 1秒</td><td>威力5 / CT 1秒</td><td>基礎威力を変更</td></tr>
@@ -111,7 +110,7 @@
 </div>
 <details class="source-details"><summary>このページの根拠資料と位置づけ</summary>
 <p>設計時資料：<code>ヴァンサバ仕様リスト.xlsx</code>、2025年4〜5月の武器DPS・敵HPに関する本人の相談記録（計算補助として生成AIを使用）。実装確認：<code>kbc_tgs2025_4gati</code> の <code>main</code>（<code>EnemyBase.cpp</code>、<code>EnemyManager.cpp/.h</code>、各武器 <code>SetStatus()</code>）。</p>
-<p>ここでの「実装確認」はソースの静的読解を意味し、配布ビルドの再実行やプレイヤー試験結果を意味しません。</p>
+<p>設計時の試算値はプレイテストで測定した数値ではありません。</p>
 </details>
 </section>
 </main>
