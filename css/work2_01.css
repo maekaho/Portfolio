@@ -54,3 +54,8 @@
 
 /* v17: trial build block */
 .download-block{margin-top:18px;padding:20px 22px}.download-block-head h3{margin:3px 0 0;font-size:1.15rem}.download-block-body{display:grid;grid-template-columns:1.35fr .95fr;gap:18px;align-items:start}.download-button{display:inline-block;margin-top:8px;padding:11px 16px;background:#653a78;color:#fff;text-decoration:none;border-radius:9px;font-weight:700}.download-url{font-size:.8rem;color:var(--muted);overflow-wrap:anywhere;margin-top:12px}.download-meta-title{font-weight:700;margin:0 0 8px}.download-meta{margin:0;padding-left:1.2em;font-size:.88rem;color:#544c5a}.download-meta li{margin:.38em 0}@media(max-width:780px){.download-block-body{grid-template-columns:1fr}}
+
+/* v20: authentic gameplay illustration next to planning write-up */
+.survivor-play-figure{margin:17px 0 0;overflow:hidden;padding:12px}
+.survivor-play-figure img{display:block;width:100%;max-height:410px;object-fit:contain;border-radius:8px;background:#132b2c}
+.survivor-play-figure figcaption{font-size:.79rem;color:var(--muted);margin:9px 4px 1px}

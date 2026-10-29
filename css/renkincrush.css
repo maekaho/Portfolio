@@ -117,3 +117,12 @@
 
 /* v17: downloadable trial build card */
 .download-section .section-heading{margin-bottom:18px}.download-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.download-card{border:1px solid var(--line);border-radius:16px;padding:22px;background:#fff}.download-label{font-size:.78rem;letter-spacing:.11em;font-weight:800;text-transform:uppercase;color:var(--accent);margin:0 0 7px}.download-card h3{margin:0 0 10px}.download-card ul{margin:0;padding-left:1.2em}.download-url{font-size:.82rem;color:var(--muted);overflow-wrap:anywhere;margin:12px 0 0}.download-note{font-size:.83rem;color:var(--muted);margin:14px 2px 0}@media(max-width:760px){.download-grid{grid-template-columns:1fr}}
+
+/* v20: numbered in-page navigation, compact trial download and optional role detail */
+.page-index a{display:inline-flex;align-items:center;gap:6px}
+.page-index .toc-num{font-size:.74rem;font-weight:900;letter-spacing:.025em;color:#7663ab;font-variant-numeric:tabular-nums}
+.download-section .download-grid{grid-template-columns:minmax(0,700px)}
+.role-matrix-details{margin:18px 0;border:1px solid var(--line);border-radius:12px;padding:10px 18px;background:#f9f9fc}
+.role-matrix-details summary{cursor:pointer;font-weight:750;color:var(--accent);padding:5px 0;line-height:1.6}
+.role-matrix-details .responsibility-matrix-wrap{margin:16px 0 6px}
+@media(max-width:900px){.download-grid{grid-template-columns:1fr}}

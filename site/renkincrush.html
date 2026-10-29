@@ -20,25 +20,17 @@
 <h1>RENKINcrush</h1>
 <p class="genre-label">連鎖パズル × 5種のミニゲーム</p>
 <p class="lead">9ターンで高得点を狙う、連鎖パズルと5種類のミニゲームを組み合わせたゲームです。ブロックの選択から落下・連鎖を考え、4連鎖以上で発生するミニゲームの追加消去を狙います。</p>
-<p class="key-result"><strong>主な貢献：</strong>ASOBEから連鎖中心の仕様への再設計を提案。さらに外部試遊で指摘された移行時の中断感に対して、ChainCheckを提案・実装しました。現行Swapの企画・実装、Timingの初期実装、ハイライト表示なども担当しました。</p>
+<p class="key-result"><strong>本人の主な貢献：</strong>旧仕様の再設計、ChainCheck・Swapの提案・実装、Timing初期実装、ハイライト表示と調整。</p>
 </div>
 <figure class="hero-media">
 <img alt="RENKINcrushのタイトル画面。5色の錬金術素材ブロックとタイトルロゴが表示されている。" src="../images/renkincrush/renkincrush_title.png"/>
 <figcaption>RENKINcrush タイトル画面</figcaption>
 </figure>
 </section>
-<nav aria-label="ページ内目次" class="page-index">
-<a href="#overview-title">1. 作品概要</a><a href="#showcase-title">本人実装：ChainCheck・Swap</a>
-<a href="#role-title">担当範囲</a>
-<a href="#background-title">2. 制作背景・挑戦・学び</a>
-<a href="#evolution-title">新旧仕様の比較</a><a href="#improvement-title">発見・改善した問題</a>
-<a href="#trial-title">試遊コメントと改良</a><a href="#tgs-title">TGS2026出展・アンケート</a><a href="#focus-title">3. こだわったこと</a>
-<a href="#spec-title">ゲーム仕様</a>
-<a href="#result-title">結果と課題</a>
-</nav><section aria-labelledby="showcase-title" class="section feature-showcase">
-<p class="section-number">PLANNED &amp; IMPLEMENTED BY ME</p>
+<nav aria-label="ページ内目次" class="page-index"><a href="#showcase-title"><span class="toc-num">01</span> 本人実装：ChainCheck・Swap</a><a href="#overview-title"><span class="toc-num">02</span> 作品概要・動画</a><a href="#role-title"><span class="toc-num">03</span> 担当範囲</a><a href="#background-title"><span class="toc-num">04</span> 制作背景と再設計</a><a href="#evolution-title"><span class="toc-num">05</span> 新旧仕様の比較</a><a href="#improvement-title"><span class="toc-num">06</span> 主な改善事例</a><a href="#trial-title"><span class="toc-num">07</span> 外部試遊・改良</a><a href="#tgs-title"><span class="toc-num">08</span> TGS2026・アンケート</a><a href="#focus-title"><span class="toc-num">09</span> こだわったこと</a><a href="#spec-title"><span class="toc-num">10</span> ゲーム仕様</a><a href="#result-title"><span class="toc-num">11</span> 結果と課題</a></nav><section aria-labelledby="showcase-title" class="section feature-showcase">
+<p class="section-number">01 / PLANNED &amp; IMPLEMENTED</p>
 <h2 id="showcase-title">本人が提案・実装した2つの機能</h2>
-<p class="section-intro">「遊びの流れを伝える仕組み」と「大連鎖の報酬として遊ぶミニゲーム」。担当した<strong>ChainCheckと現行Swap</strong>を、実際のプレイ画面で紹介します。画像を選択すると原寸で開きます。</p>
+<p class="section-intro">自分が提案・実装したChainCheckと現行Swapを、実際のプレイ画面で紹介します。画像はクリックで拡大できます。</p>
 <div class="showcase-two-col">
 <article aria-labelledby="cc-feature-title" class="showcase-feature-card">
 <p class="showcase-eyebrow">01 / FLOW DESIGN &amp; IMPLEMENTATION</p>
@@ -77,7 +69,7 @@
 </div>
 </section>
 <section aria-labelledby="overview-title" class="section required-section">
-<p class="section-number">01</p>
+<p class="section-number">02 / PROJECT</p>
 <h2 id="overview-title">作品概要</h2>
 <dl class="facts">
 <div><dt>ゲームジャンル</dt><dd>連鎖パズル＋ミニゲーム</dd></div>
@@ -90,7 +82,7 @@
 </dl>
 <div class="summary-panel">
 <h3>作品概要</h3>
-<p>15列×13行・5色の盤面から同色グループを選んで直接消去します。落下後、着地したブロックを起点に同色3個以上のつながりがあれば自動消去を繰り返し、連鎖が成立します。<strong>連鎖が終わったあと</strong>、補充と結果表示を経て4連鎖以上ならミニゲームへ。発生する種類は最初に選んだ色で決まり、成功するとゲームごとに異なる範囲を追加消去します。9ターンのスコア・称号・ランキングを競います。</p>
+<p>15×13マス・5色の盤面から同色グループを選んで消去。落下後に同色3個以上がつながると自動連鎖し、4連鎖以上で対応するミニゲームに進みます。全9ターンでスコアを競います。</p>
 </div>
 <div aria-label="RENKINcrushの紹介動画とプレイ動画" class="video-pair"><div aria-label="RENKINcrush紹介動画" class="video-feature">
 <div class="video-feature-heading">
@@ -104,7 +96,7 @@
 <a class="video-cta" href="https://youtu.be/z2F1T8NpXEI" rel="noopener noreferrer" target="_blank">YouTubeで紹介動画を見る</a>
 <span class="video-url">https://youtu.be/z2F1T8NpXEI</span>
 </div>
-<p class="video-note">映像が表示されない環境では上のリンクから開いてください。PDF版では埋め込み再生されないため、URLを掲載しています。</p>
+<p class="video-note">動画が表示されない場合は、上のYouTubeリンクから確認できます。</p>
 </div><div aria-label="RENKINcrushプレイ動画" class="video-feature">
 <div class="video-feature-heading">
 <div><p class="section-kicker">GAMEPLAY MOVIE</p><h3>RENKINcrush プレイ動画</h3></div>
@@ -119,33 +111,25 @@
 </div>
 <p class="video-note">映像が表示できない場合はYouTubeのリンクを開いてください。</p>
 </div></div>
-<section class="download-section section" aria-labelledby="trial-build-title">
-<div class="section-heading"><p class="section-kicker">TRIAL BUILD</p><h2 id="trial-build-title">試遊用ビルド</h2><p>採用担当者向けに、Windows向けの試遊版ビルドも掲載しています。動画に加えて、実際の操作感も確認できます。</p></div>
+<section aria-labelledby="trial-build-title" class="download-section section">
+<div class="section-heading"><p class="section-kicker">TRIAL BUILD</p><h2 id="trial-build-title">試遊用ビルド</h2><p>Windows向けの試遊版です。動画だけでは伝わらない操作感も確認できます。</p></div>
 <div class="download-grid">
 <article class="download-card">
 <p class="download-label">WINDOWS BUILD</p>
 <h3>RENKINcrush 試遊版（ZIP）</h3>
-<p>配布ファイル名：<code>GP34TeamF_Build_0914.zip</code><br/>Google Drive上の約220MBの試遊ビルドです。</p>
+<p>Windows向けZIP（約220MB）。展開後、フォルダ内のEXEから起動できます。</p>
 <a class="video-cta" href="https://drive.google.com/file/d/148q3V9yiPLH_lLyB8K67_KtLD2d2w9QZ/view?usp=drivesdk" rel="noopener noreferrer" target="_blank">Google Driveで試遊版を見る</a>
 <p class="download-url">https://drive.google.com/file/d/148q3V9yiPLH_lLyB8K67_KtLD2d2w9QZ/view?usp=drivesdk</p>
 </article>
-<article class="download-card caution">
-<p class="download-label">NOTES</p>
-<h3>確認用メモ</h3>
-<ul>
-<li>Windows向けのZIPです。展開後、フォルダ内の実行ファイルから起動します。</li>
-<li>動画とあわせて、操作感やミニゲームの流れを確認できるようにしています。</li>
-<li>閲覧環境によってはGoogle Driveから直接ダウンロードされます。</li>
-</ul>
-</article>
+
 </div>
-<p class="download-note">※ 応募時点で共有設定済みのGoogle Driveリンクを掲載しています。</p>
+
 </section>
 <div aria-labelledby="role-title" class="role-section">
 <div class="role-heading">
-<p class="section-kicker">ROLE &amp; RESPONSIBILITY</p>
+<p class="section-kicker">03 / TEAM &amp; ROLE</p>
 <h3 id="role-title">担当範囲とチーム体制</h3>
-<p>3人チームで制作。本人と共同制作者の担当を分けて示しています（以下は本人が確認した主な分担）。</p>
+<p>3人チームで制作。自分の担当と共同制作者の役割を分けて記載しています。</p>
 </div>
 <div class="role-summary-grid">
 <article class="role-person own-role">
@@ -158,7 +142,7 @@
 <li>選択範囲と盤面変化を示すハイライト表示の実装</li>
 <li>ミニゲームの数値調整、演出調整、動作・品質確認</li>
 </ul>
-</article><p class="scope-note role-caveat"><strong>本人担当の範囲：</strong>ChainCheck・現行の調合型Swapは企画から実装まで、Timingは初期実装を担当しました。</p>
+</article>
 <article class="role-person">
 <p class="role-name">メンバーA</p>
 <h4>パズル本体・他ミニゲームの実装、バグ修正</h4>
@@ -170,7 +154,7 @@
 <ul><li>ゲーム内で使う画像の制作</li><li>パズル本体に関連する制作・作業</li></ul>
 </article>
 </div>
-<div class="responsibility-matrix-wrap">
+<details class="role-matrix-details"><summary>本人の担当範囲を詳しく見る（企画・実装・調整）</summary><div class="responsibility-matrix-wrap">
 <table class="responsibility-matrix">
 <thead>
 <tr><th>領域</th><th>本人の担当</th><th>決定・実装の区分</th></tr>
@@ -185,7 +169,7 @@
 <tr><th>演出・品質</th><td>Swap中、消去時、召喚獣のはじけ方、各ミニゲーム成功時、ターン遷移時の演出を調整・確認</td><td><span class="scope-tag tuning">本人調整</span></td></tr>
 </tbody>
 </table>
-</div>
+</div></details>
 <div class="decision-flow-note">
 <h4>仕様決定の流れ</h4>
 <p>各メンバーが案を出す、または軽く試作した後、本人が内容を確認・整理し、先生方のレビューを受けてチームで最終決定しました。</p>
@@ -194,18 +178,18 @@
 </div>
 </section>
 <section aria-labelledby="background-title" class="section required-section">
-<p class="section-number">02</p>
+<p class="section-number">04 / DESIGN PROCESS</p>
 <h2 id="background-title">制作背景・挑戦したこと・学んだこと</h2>
 <div class="narrative-grid">
 <article class="narrative-card">
 <p class="narrative-label">制作背景</p>
 <h3>「積みゲーを解消する」を遊びにする</h3>
-<p>最初は「積みゲーを解消する」という発想でした。試作版ASOBE（Ver0517）では、積まれた盤面から同色の塊を選び、対応するミニゲームを成功させてブロックを消す全消し型パズルを試作しました。</p>
+<p>旧版ASOBEは、「積みゲーを解消する」という着想を形にした全消し型パズルです。盤面の同色ブロックを選び、対応するミニゲームを成功させて消去するルールで制作しました。</p>
 </article>
 <article class="narrative-card">
 <p class="narrative-label">問題の発見と再設計</p>
 <h3>原案の魅力を残し、遊びの中心を再設計</h3>
-<p>試遊でルールの分かりにくさを指摘され、ブロック消去のたびに別の操作・判断を求める構造を課題と捉えました。盤面の連鎖とスコアを主役にし、ミニゲームを4連鎖以上の報酬へ変更する仕様を提案しました。<strong>この変更は外部試遊会での後続改善とは別の段階です。</strong></p>
+<p>試遊でルールの分かりにくさを指摘され、消去のたびに判断と操作を切り替える点を課題と捉えました。そこで、連鎖とスコアを主役にし、ミニゲームを4連鎖以上の報酬へ変更する仕様を提案しました。</p>
 </article>
 <article class="narrative-card">
 <p class="narrative-label">学んだこと</p>
@@ -215,13 +199,13 @@
 </div>
 <div aria-labelledby="evolution-title" class="concept-evolution">
 <div class="evolution-heading">
-<p class="section-kicker">PLAY EXPERIENCE REDESIGN</p>
+<p class="section-kicker">05 / BEFORE &amp; AFTER</p>
 <h3 id="evolution-title">旧版「ASOBE」からRENKINcrushへ</h3>
-<p>初期の「積みゲーを解消する」案から、旧版ASOBE（Gitブランチ <code>Ver0517</code>）を経て、連鎖とスコア中心のゲームへ再設計しました。以下は<strong>旧版の実プレイ画面と、再設計後の記録画面</strong>です。</p>
+<p>「積みゲーを解消する」着想から生まれた旧版ASOBEを、連鎖とスコアを中心とするRENKINcrushへ再設計しました。旧版と再設計後の実際の画面を比較します。</p>
 </div>
 <div class="portfolio-compare-grid">
 <article class="compare-column compare-before">
-<p class="evolution-label">BEFORE / ASOBE・Ver0517</p>
+<p class="evolution-label">BEFORE / ASOBE</p>
 <h4>ミニゲームの成功がブロック消去の条件</h4>
 <figure><img alt="旧版ASOBEのパズル画面。左に6列13行の盤面、右に選択したブロックのミニゲーム名と消去予定数が表示されている。" loading="lazy" src="../images/renkincrush/asobe_ver0517_selection.png"/><figcaption>旧版のブロック選択画面（開発中の画面）</figcaption></figure>
 <figure><img alt="旧版ASOBEでブロックを選ぶと始まるシューティング。左の盤面は表示されたまま、右側でミニゲームを進める。" loading="lazy" src="../images/renkincrush/asobe_ver0517_shooting.png"/><figcaption>選択したブロックに対応するミニゲーム</figcaption></figure>
@@ -231,14 +215,14 @@
 <article class="compare-column compare-after">
 <p class="evolution-label">AFTER / RENKINcrush</p>
 <h4>連鎖の成果をミニゲームに結び付ける</h4>
-<figure><img alt="RENKINcrushの通常パズル画面" loading="lazy" src="../images/renkincrush/normal.png"/><figcaption>通常パズルのプレイ画面（保存済み画面。現在のUIとは一部異なる可能性あり）</figcaption></figure>
-<figure><img alt="RENKINcrushで4連鎖が発生した画面" loading="lazy" src="../images/renkincrush/4chain.png"/><figcaption>4連鎖が発生した場面（保存済み画面。現在のUIとは一部異なる可能性あり）</figcaption></figure>
+<figure><img alt="RENKINcrushの通常パズル画面" loading="lazy" src="../images/renkincrush/normal.png"/><figcaption>再設計後の通常パズル画面</figcaption></figure>
+<figure><img alt="RENKINcrushで4連鎖が発生した画面" loading="lazy" src="../images/renkincrush/4chain.png"/><figcaption>再設計後の4連鎖の場面</figcaption></figure>
 <ol><li>同色グループを選択し、そのまま消去する</li><li>落下後、着地を起点に同色3個以上なら自動連鎖</li><li>連鎖終了後に結果を案内・盤面を補充</li><li>4連鎖以上なら最初に選んだ色のミニゲームが発生</li><li>追加消去を使い、9ターンでスコアを競う</li></ol>
 <p class="compare-emphasis"><strong>狙った体験：</strong>盤面の選択と連鎖を遊びの中心に置き、ミニゲームを大連鎖の報酬としました。</p>
 </article>
 </div>
-<div class="evidence-strip"><strong>初期の再設計：</strong>「ミニゲーム成功がブロック消去の条件」から、「連鎖達成後にボーナスとしてミニゲームを遊ぶ」構造へ。旧版にも盤面判断はあり、その役割を組み直した点が変更の中心です。</div>
-<p class="evidence-note">※旧版は開発途中の <code>Ver0517</code> で、最初期の原案とは異なります。比較画像の「再設計後」は保存時点の画面であり、10月29日時点のUIを再現するものではありません。統一した指標による新旧比較データは未整理です。</p>
+
+
 </div>
 <div class="agreement-panel">
 <h3>仕様変更時の合意形成</h3>
@@ -252,7 +236,7 @@
 <section aria-labelledby="improvement-title" class="section improvement-section">
 <div class="section-heading-row">
 <div>
-<p class="section-kicker">PROBLEM SOLVING</p>
+<p class="section-kicker">06 / PROBLEM SOLVING</p>
 <h2 id="improvement-title">発見・改善した主な問題</h2>
 </div>
 <p class="section-summary">企画、操作設計、プログラムの異なる観点から、問題の原因を整理して対応しました。</p>
@@ -290,9 +274,9 @@
 </article>
 </div>
 </section><section aria-labelledby="trial-title" class="section trial-section">
-<p class="section-number">FIELD REVIEW</p>
+<p class="section-number">07 / FIELD REVIEW</p>
 <h2 id="trial-title">外部試遊の指摘を次の改善へつなげる</h2>
-<p class="section-intro">初期の仕様再設計後、外部試遊会で「連鎖の楽しさがミニゲームへの移行で途切れる」と指摘されました。<strong>これを受け、本人がChainCheckを提案・実装。</strong> 導入後のチーム内の反応は好評でしたが、その機能について外部からの評価は得ていません。</p>
+<p class="section-intro">連鎖の楽しさが評価される一方、ミニゲームへの切り替えや、連鎖を自分で作る余地について指摘を受けました。主な意見と対応を整理します。</p>
 <div class="feedback-voices">
 <article class="feedback-voice">
 <p class="feedback-source">学生の試遊コメント</p>
@@ -315,21 +299,17 @@
 <table class="responsibility-matrix trial-table">
 <thead><tr><th>論点</th><th>反映・確認できたこと</th><th>現時点の評価</th></tr></thead>
 <tbody>
-<tr><th>ミニゲームが連鎖の爽快感を中断する</th><td><strong>本人がChainCheckを提案・実装。</strong> 連鎖が完全に終わったあと連鎖数と次の展開を表示し、補充・案内を経てミニゲームへ移行するよう整理。</td><td>導入後は<strong>チーム内で好評</strong>。一方、外部試遊者からChainCheck単体についての反応は得られておらず、中断感の改善効果は未検証。</td></tr>
+<tr><th>ミニゲームが連鎖の爽快感を中断する</th><td>ChainCheckを提案・実装。連鎖終了後に結果と次のミニゲームを案内する画面を設けました。</td><td>チーム内では好評でした。外部での機能別評価は未取得です。</td></tr>
 <tr><th>連鎖を自分で組み立てる余地が少ない</th><td>選択グループのハイライトはあるが、入力操作は基本的に消去起点の選択。連鎖は落下と補充結果に左右される。</td><td><strong>継続課題。</strong>解決したとは記載しない。</td></tr>
 <tr><th>既に3個以上つながったブロックが消えない</th><td>現行コードは<strong>着地したブロック</strong>を起点に自動連鎖を判定するため、既存の塊すべてが自動消去される仕様ではない。</td><td>仕様の説明・理解促進を含め検討が必要。</td></tr>
 </tbody>
 </table>
 </div>
-<div class="chaincheck-case">
-<h3>指摘を受けて加えた「連鎖の結果を見せる時間」</h3>
-<p>連鎖終了後に結果を表示して、次にミニゲームへ進むことを知らせるためのChainCheckを本人が提案・実装しました。実画面と仕様の狙いはページ前半の「本人が提案・実装した2つの機能」にまとめています。</p>
-<p class="evidence-note"><strong>反応：</strong>導入後、チーム内では好評でした。ただし、外部試遊者からの機能別の反応・改善前後の比較データはありません。</p>
-</div>
-<p class="evidence-note">資料：『【2026】試遊会_コメント一覧』と2026年10月29日時点のソース読解資料。Cygamesから別途受けた作品講評とは異なる機会です。</p>
+
+
 </section>
 <section aria-labelledby="tgs-title" class="section tgs-section">
-<p class="section-number">EXHIBITION &amp; USER FEEDBACK</p>
+<p class="section-number">08 / TGS2026</p>
 <h2 id="tgs-title">TGS2026出展と来場者アンケート</h2>
 <p class="section-intro">2026年4月10日〜6月26日の制作後、<strong>全16チーム中3位</strong>となり、上位4チームに与えられるTGS2026の出展枠を獲得しました。会場では他チームの学生と交代でブースに立ち、呼び込みと試遊者へのヒアリングに参加しました。</p>
 <div aria-label="出展概要" class="tgs-exhibition-facts">
@@ -344,7 +324,7 @@
 <article class="tgs-evaluation"><p>テンポ・爽快感</p><strong>4.6 <small>/ 5</small></strong><div aria-label="5点満点中平均4.6" class="tgs-meter" role="img"><span style="width:92.7%"></span></div><p class="tgs-denom">有効回答11件・5点が7件</p></article>
 <article class="tgs-evaluation"><p>わかりやすさ</p><strong>4.4 <small>/ 5</small></strong><div aria-label="5点満点中平均4.4" class="tgs-meter" role="img"><span style="width:88%"></span></div><p class="tgs-denom">有効回答10件・5点が6件</p></article>
 </div>
-<p class="tgs-methodology">集計方法：11件を母数とし、数値が1つに定まる回答のみ平均しています。「4・5」と記された回答1件は、面白さ・わかりやすさの平均から除外。小数第2位を四捨五入しました。回答者の年齢・性別・職業などの個人属性は掲載していません。</p>
+
 <div class="tgs-insight-grid">
 <article class="tgs-insight tgs-insight-good">
 <p class="section-kicker">WHAT WORKED</p><h3>狙った連鎖・テンポが評価された</h3>
@@ -355,11 +335,11 @@
 <p>一方で、<strong>調合型Swapの遊び方が分かりにくい、パズルの後のミニゲームとの関連が薄い、複数のゲーム要素を単に足したように感じた</strong>という指摘がありました。遊びを切り替えるときの納得感と情報提示には改善余地があります。</p>
 </article>
 </div>
-<div class="tgs-next-step"><h3>この結果から考えた次の改善</h3><p>Swapの目標比率・操作方法をプレイ前に理解できる表示にし、<strong>連鎖の成果がミニゲームの報酬につながる理由</strong>を画面上でより明確にすることを検討します。これはアンケートを踏まえた今後の提案であり、実装・改善効果の検証が完了したものではありません。</p></div>
-<p class="evidence-note">補足：回答数は11件で、プレイ回数は1回が9件、2回が2件です。来場者全体を代表する標本ではなく、改修前後を比較した調査でもありません。評価値はTGSでの試遊者の声として扱い、改善効果や統計的な優位性を断定しません。先の「外部試遊会」のコメントとは別の調査です。</p>
+<div class="tgs-next-step"><h3>この結果から考えた次の改善</h3><p>Swapの操作方法と目標比率をプレイ前に理解しやすくし、連鎖の成果とミニゲームのつながりをより直感的に伝える方法を検討しています。</p></div>
+
 </section>
 <section aria-labelledby="focus-title" class="section required-section">
-<p class="section-number">03</p>
+<p class="section-number">09 / DESIGN &amp; IMPLEMENTATION</p>
 <h2 id="focus-title">こだわった（工夫した）こと</h2>
 <p class="section-intro">作品の核となる体験と、そこへつなげるための設計・実装を4項目に整理しました。</p>
 <div class="focus-list">
@@ -372,7 +352,7 @@
 <p class="focus-index">01 / GAME DESIGN</p>
 <h3>消去条件ではなく、連鎖の達成報酬へ</h3>
 <p class="focus-comment">再設計後は、パズルの流れを保ちながら、大連鎖の成果をミニゲームにつなぐようにしました。</p>
-<p>Ver0517では毎回ミニゲームをクリアしなければブロックを消せませんでした。新仕様では直接消去と落下連鎖を中心にし、4連鎖以上の達成時にボーナスとして発生させます。試遊会後は本人がChainCheckを提案・実装し、連鎖終了後の結果案内・補充を挟むよう変更しました。</p>
+<p>毎回ミニゲームを挟む旧仕様から、直接消去と落下連鎖が中心のルールへ変更。ミニゲームは4連鎖以上の報酬にしました。</p>
 </div>
 </article>
 <article class="focus-item reverse">
@@ -396,7 +376,7 @@
 <p class="focus-index">03 / IMPLEMENTATION</p>
 <h3>現行Swapの提案・実装とTimingの初期実装</h3>
 <p class="focus-comment">Swapは企画から実装まで担当しました。Timingについては初期版の実装を担当しました。</p>
-<p>Swapでは目標比率に向けて錬金液と泡を調合する操作・演出を実装しました（実画面は上部の機能紹介に掲載）。Timingでは3本のバーを停止する初期版の処理を担当し、後続の改修は本人実績に含めていません。</p>
+<p>Swapの入力・液面表示と目標比率の判定を実装。Timingは3本のバーを止める処理の初期版を担当しました。</p>
 </div>
 </article>
 <article class="focus-item reverse">
@@ -416,7 +396,7 @@
 <section aria-labelledby="spec-title" class="section">
 <div class="section-heading-row">
 <div>
-<p class="section-kicker">GAME SPECIFICATION</p>
+<p class="section-kicker">10 / GAME SPECIFICATION</p>
 <h2 id="spec-title">ゲーム仕様</h2>
 </div>
 <p class="section-summary">現在の実装を、採用担当が短時間で把握できる情報に絞っています。</p>
@@ -480,17 +460,17 @@
 <p>3本のバーを順番に止め、最初の停止位置を基準に残り2本を±45px以内へ。成功時は対応する行と上下2行を追加消去。</p>
 </article>
 </div>
-<p class="scope-note">企画・実装上の役割：現行Swap（調合ゲーム）の提案と実装、Timingの初期実装、ハイライト表示の実装は本人が担当しました。ButtonBashの初期内容も提案し、Action・Shootingはチームで検討しました。Timingは初期実装を担当しました。AIを利用した実装補助の内容は担当範囲の欄に記載しています。</p>
+<p class="scope-note">※ Swapの企画・実装とTimingの初期実装を担当。その他の役割は「担当範囲とチーム体制」に記載しています。</p>
 </section>
 <section aria-labelledby="result-title" class="section">
-<h2 id="result-title">結果と残った課題</h2>
+<p class="section-number">11 / RESULT &amp; REFLECTION</p><h2 id="result-title">結果と残った課題</h2>
 <div class="result-grid">
 <article class="card">
 <h3>結果</h3>
 <ul>
-<li>2026年4月10日〜6月26日に3人で制作。16チーム中3位となり、上位4チームの東京ゲームショウ2026出展枠を獲得しました。</li>
-<li>6月26日以降も調整を継続。外部試遊で指摘された中断感に対し、本人がChainCheckを提案・実装し、連鎖終了後の結果表示と補充を経てミニゲームへ移行する流れを設けました。</li>
-<li>出展当日にはブース運営・呼び込み・試遊者へのヒアリングに参加。アンケート11件では、テンポ・爽快感の平均が4.6/5（11件）でした。</li>
+<li>16チーム中3位に選出され、TGS2026へ出展しました。</li>
+<li>外部試遊の指摘を受け、ChainCheckを提案・実装しました。</li>
+<li>TGS会場で来場者の声を集め、連鎖演出とテンポへの評価を把握しました。</li>
 </ul>
 </article>
 <article class="card caution">
@@ -498,11 +478,11 @@
 <ul>
 <li>選択起点以外の盤面操作が少なく、連鎖を運任せに感じられるという指摘への対応は継続課題です。</li>
 <li>既に3個以上つながっているグループは、着地起点がないと自動消去されないため、ルール理解に課題があります。</li>
-<li>TGSアンケートではSwapの分かりにくさ、パズルとミニゲームの関連の弱さも指摘されました。ChainCheckはチーム内で好評でしたが、外部での機能別評価や改善前後の比較は行っていません。</li>
+<li>TGSではSwapの操作や、パズルとミニゲームのつながりに課題が挙がりました。</li>
 </ul>
 </article>
-</div><p class="evidence-note">外部試遊会（学生・イリンクス・サイバーコネクトツー）のコメントは本ページの「外部試遊」欄に整理しています。別途、Cygamesの関係者にも作品を見せて講評を受けていますが、高い評価を受けたという主張はしていません。</p>
-<p class="reflection">連鎖の爽快感は評価される一方、ミニゲームへのつながりやSwapの説明に課題があると分かりました。今後は、実装案を小さく試し、共通の試遊項目で「操作の理解」「つながりの納得感」「連鎖の主体性」を確認したいと考えています。</p>
+</div>
+<p class="reflection">実際の試遊から、連鎖の爽快感に加えて「操作の理解」「ミニゲームへの納得感」「連鎖の主体性」が重要だと学びました。今後は改善案を小さく試し、プレイヤーの反応を確認していきます。</p>
 </section>
 </main>
 <footer>
