@@ -41,3 +41,21 @@
 .opengl-demo-note{font-size:.82rem!important;line-height:1.7}
 @media(max-width:700px){.opengl-gallery,.opengl-demo-grid{grid-template-columns:1fr}.opengl-gallery .art img{height:auto;max-height:350px}.opengl-demo-grid{padding:14px;gap:14px}.opengl-video-frame video{max-height:390px}}
 @media print{.opengl-video-frame{display:none}.opengl-demo-grid{display:block}.opengl-gallery{break-inside:avoid}.opengl-gallery .art img{height:auto;max-height:280px}}
+
+
+/* v21: 雨天の迷宮のプレイ映像と実画面 */
+.rain-hero-shot{margin-top:14px}
+.rain-hero-shot a,.rain-gallery a{display:block;line-height:0}
+.rain-hero-shot img{max-height:none;object-fit:contain;width:100%;height:auto}
+.rain-hero-shot a:focus-visible,.rain-gallery a:focus-visible{outline:3px solid #9964aa;outline-offset:-3px}
+.rain-video-frame{position:relative;width:100%;aspect-ratio:16/9;border-radius:11px;overflow:hidden;background:#15171b;margin:13px 0 12px}
+.rain-video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.rain-video-link{display:flex;align-items:baseline;gap:10px 17px;flex-wrap:wrap;margin:0}
+.rain-video-link a{font-weight:750}
+.rain-video-link span{font-size:.8rem;color:var(--muted);overflow-wrap:anywhere}
+.rain-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:14px 0 0}
+.rain-gallery .art{margin:0;min-width:0}
+.rain-gallery img{height:260px;width:100%;object-fit:contain;background:#1a1619}
+.rain-gallery figcaption{line-height:1.5}
+@media(max-width:700px){.rain-gallery{grid-template-columns:1fr}.rain-gallery img{height:auto;max-height:360px}}
+@media print{.rain-video-frame{display:none}.rain-gallery .art{break-inside:avoid}}

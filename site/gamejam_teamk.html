@@ -1,14 +1,84 @@
 <!DOCTYPE html>
-<html lang="ja"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="雨天の迷宮：2年次ゲームジャム。3種類のCSVマップ選定、マップ制作、雨の多層演出を担当。" name="description"/><title>雨天の迷宮 | Portfolio</title><link href="../css/works_extra.css" rel="stylesheet"/></head>
-<body><main class="container"><a class="back" href="../index.html">← 作品一覧へ戻る</a><header class="head"><p class="tag">GAME DEVELOPMENT / GAME JAM 02</p><h1>雨天の迷宮</h1><p>敵の巡回・追跡を避け、ステージ内に配置されたアイテム（傘）を探す探索・逃走型ゲーム。2年次ゲームジャムのチーム作品です。</p></header>
-<div class="facts"><div class="fact"><p class="label">開発環境</p><p>C++ / DxLib</p></div><div class="fact"><p class="label">ステージ</p><p>3種類の固定マップをランダム選択</p></div><div class="fact"><p class="label">本人担当</p><p>マップ制作・選定処理・雨などの演出調整</p></div></div>
-<figure class="art"><img alt="雨天の迷宮のタイトル画面用画像" src="../images/gamejam_teamk/title.png"/><figcaption>タイトル画面用の作品素材（実際のゲームプレイ中のスクリーンショットではありません）</figcaption></figure>
-<section class="section"><h2>作品の構成</h2><p>開始時に3つのステージCSVからランダムで1つ選び、そのマップを読み込んで配置します。各ステージにはプレイヤー・傘・敵の配置データと、敵の巡回ルートを指定した別CSVが用意されています。マップを毎回自動生成する方式ではなく、あらかじめ作成したマップから選ぶ方式です。</p><p>敵に追われる緊張感と、傘を探して回収する目的があるゲームです。敵のAIやすべてのキャラクター挙動を自作したという意味ではありません。</p></section>
-<section class="section"><h2>担当した実装・制作</h2><ul>
-<li><strong>マップ選定：</strong>乱数から0〜2のインデックスを選び、Stage1〜3のCSVと対応する敵の巡回ルート・配置情報を読み込む仕組み。</li>
-<li><strong>マップ制作：</strong>ステージごとに42列×27行のタイル配置CSVを作成。通行可能な床・障害物・周囲の壁などの配置を組み合わせました。</li>
-<li><strong>雨の演出：</strong>雨画像を遠景・近景の2層でスクロールし、移動速度・透明度・カメラ追従量を変えて奥行きと雨量を表現しました。</li></ul></section>
-<section class="section"><h2>雨の演出で工夫したこと</h2><p>遠景の雨は薄く遅く、近景の雨は濃く速く流れるように設定しました。さらにカメラ移動量に異なる係数を適用し、画面端で雨が途切れないよう、画像を縦横に繰り返して描画しています。</p><div class="facts"><div class="fact"><p class="label">遠景</p><p>速度 (-60, +120) / 透明度 70 / カメラ追従 0.08</p></div><div class="fact"><p class="label">近景</p><p>速度 (-160, +300) / 透明度 160 / カメラ追従 0.22</p></div><div class="fact"><p class="label">画面端</p><p>スクロール位置を余りで処理し、画像を4枚配置して継ぎ目を抑制</p></div></div></section>
-<figure class="art"><img alt="雨天の迷宮のローディング画面用画像" src="../images/gamejam_teamk/loading.png"/><figcaption>ローディング画面用の作品素材。雨の前後レイヤーを実際に合成したスクリーンショットではありません。</figcaption></figure>
-<section class="section"><h2>資料の状態</h2><p>ステージ選択は<code>Scene/Loading/LoadingScene.cpp</code>、マップ・配置データは<code>Resource/Stage/</code>および<code>Resource/CreatePoint/</code>、雨は<code>Scene/InGame/InGameScene.cpp</code>で確認できます。</p><p class="note">作品の仕様と担当内容を紹介しています。ゲーム本体・チームソース一式は公開していません。</p></section>
-<footer class="foot">制作した部分とチーム全体の成果を区別して掲載しています。実プレイ画面は未追加です。</footer></main></body></html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="description" content="雨天の迷宮：2年次ゲームジャム作品。3種類の固定CSVマップからの選択、マップ制作、遠景・近景の雨演出を担当。実際のプレイ画面と動画を紹介。"/>
+<title>雨天の迷宮 | Portfolio</title>
+<link rel="stylesheet" href="../css/works_extra.css"/>
+</head>
+<body>
+<main class="container">
+<a class="back" href="../index.html">← 作品一覧へ戻る</a>
+<header class="head">
+  <p class="tag">GAME DEVELOPMENT / GAME JAM 02</p>
+  <h1>雨天の迷宮</h1>
+  <p>雨が降るマップで敵の巡回・追跡を避け、傘を探して回収する探索・逃走型ゲーム。2年次のチーム制作で、マップ制作・ステージ選択と雨の演出を担当しました。</p>
+</header>
+<div class="facts">
+  <div class="fact"><p class="label">開発環境</p><p>C++ / DxLib</p></div>
+  <div class="fact"><p class="label">ステージ構成</p><p>3種類の固定マップから選択</p></div>
+  <div class="fact"><p class="label">本人の主担当</p><p>マップ制作・選定処理・雨演出</p></div>
+</div>
+
+<section class="section" aria-labelledby="rain-gameplay-title">
+<h2 id="rain-gameplay-title">実際のプレイ画面</h2>
+<figure class="art rain-hero-shot">
+<a href="../images/gamejam_teamk/gameplay.webp" target="_blank" rel="noopener noreferrer" aria-label="雨天の迷宮のプレイ画面を拡大表示する">
+<img alt="雨の降る森のマップで、少女のプレイヤーキャラクターと敵、赤い扇形の表示が見える実プレイ画面" src="../images/gamejam_teamk/gameplay.webp" width="1450" height="822" decoding="async" fetchpriority="high"/>
+</a>
+<figcaption>雨の中で敵の動きを警戒しながら進むプレイ画面。マップのタイル配置と遠近の雨の表現が確認できます。</figcaption>
+</figure>
+</section>
+
+<section class="section" aria-labelledby="rain-video-title">
+<h2 id="rain-video-title">プレイ動画</h2>
+<p>学内ゲームジャム作品のプレイ映像です。画面だけでは伝わりにくい雨の動きやゲーム進行を確認できます。</p>
+<div class="rain-video-frame"><iframe src="https://www.youtube.com/embed/IUESPNLyn7A" title="雨天の迷宮 プレイ動画（学内Game Jam 2026）" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+<p class="rain-video-link"><a href="https://youtu.be/IUESPNLyn7A" target="_blank" rel="noopener noreferrer">YouTubeでプレイ動画を開く</a><span>https://youtu.be/IUESPNLyn7A</span></p>
+</section>
+
+<section class="section"><h2>作品の構成</h2>
+<p>開始時に3つのステージCSVからランダムで1つを選んで読み込みます。各ステージにはマップの配置に加え、プレイヤー・傘・敵の配置データと敵の巡回ルートを指定するCSVを用意しました。</p>
+<p>毎回マップを自動生成する方式ではなく、<strong>あらかじめ作成した3種類の固定マップから選ぶ</strong>仕組みです。</p>
+</section>
+
+<section class="section"><h2>担当した実装・制作</h2>
+<ul>
+<li><strong>マップ選定：</strong>乱数から0〜2の値を選び、対応するステージCSVと敵の配置・巡回ルートの情報を読み込む仕組みを担当。</li>
+<li><strong>マップ制作：</strong>3ステージ分の42列×27行のタイル配置CSVを制作。通行できる場所や障害物、壁の配置を調整。</li>
+<li><strong>雨の演出：</strong>遠景と近景の雨画像を異なる速度・透明度・カメラ追従量でスクロールさせ、奥行きと雨量を表現。</li>
+</ul>
+<p class="note">敵のAIやキャラクターのすべての挙動を一人で実装したという意味ではありません。チーム作品のうち本人が担当した範囲を記載しています。</p>
+</section>
+
+<section class="section"><h2>雨の演出で工夫したこと</h2>
+<p>遠景は薄くゆっくり、近景は濃く速く動かし、カメラ移動量に異なる係数を掛けて視差を作りました。画面端で雨が途切れないよう、スクロール位置を余りで処理しながら画像を繰り返して描画しています。</p>
+<div class="facts">
+<div class="fact"><p class="label">遠景の雨</p><p>速度 (-60, +120) / 透明度 70 / カメラ追従 0.08</p></div>
+<div class="fact"><p class="label">近景の雨</p><p>速度 (-160, +300) / 透明度 160 / カメラ追従 0.22</p></div>
+<div class="fact"><p class="label">画面端の処理</p><p>スクロール位置を余りで処理し、複数枚を配置して継ぎ目を抑制</p></div>
+</div>
+</section>
+
+<section class="section"><h2>その他の画面</h2>
+<div class="rain-gallery">
+  <figure class="art">
+  <a href="../images/gamejam_teamk/caught_message.webp" target="_blank" rel="noopener noreferrer" aria-label="物語のメッセージ画面を拡大表示する"><img src="../images/gamejam_teamk/caught_message.webp" loading="lazy" decoding="async" alt="黒い背景と雨の演出に、少女は化け物に捕まってしまったというメッセージを表示した画面"/></a>
+  <figcaption>捕まった際のメッセージ画面</figcaption>
+  </figure>
+  <figure class="art">
+  <a href="../images/gamejam_teamk/game_over.webp" target="_blank" rel="noopener noreferrer" aria-label="GAME OVER画面を拡大表示する"><img src="../images/gamejam_teamk/game_over.webp" loading="lazy" decoding="async" alt="赤黒い背景と大きなGAME OVERの文字が表示された画面"/></a>
+  <figcaption>GAME OVER表示</figcaption>
+  </figure>
+</div>
+</section>
+
+<section class="section"><h2>制作内容の補足</h2>
+<p>ステージ選択の処理は<code>Scene/Loading/LoadingScene.cpp</code>、ステージデータは<code>Resource/Stage/</code>および<code>Resource/CreatePoint/</code>、雨の描画は<code>Scene/InGame/InGameScene.cpp</code>に関連しています。</p>
+<p>作品の遊び方と本人の担当範囲を中心に紹介しています。ゲーム本体・チームのソース一式は、このページからは配布していません。</p>
+</section>
+<footer class="foot">雨天の迷宮 · 作品と本人担当の紹介</footer>
+</main>
+</body>
+</html>
