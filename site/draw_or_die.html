@@ -1,7 +1,73 @@
 <!DOCTYPE html>
-<html lang="ja"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>Draw or Die | Portfolio</title><link href="../css/works_extra.css" rel="stylesheet"/></head><body><main class="container"><a class="back" href="../index.html">← 作品一覧へ戻る</a><header class="head"><p class="tag">GAME DEVELOPMENT / GAME JAM 01</p><h1>Draw or Die</h1><p>合図への反応速度を競う、2人対戦の短編ゲーム。1年次のゲームジャムで制作。</p></header><div class="facts"><div class="fact"><p class="label">制作形態</p><p>チーム制作</p></div><div class="fact"><p class="label">使用技術</p><p>C++ / DxLib（リポジトリで確認）</p></div><div class="fact"><p class="label">本人担当</p><p>企画・操作部分</p></div></div>
-<section class="section"><h2>作品概要</h2><p>画面に表示される合図を見て、相手より早く正しいボタンを押すゲーム。GitHubのゲームデータでは、先に3ポイントを取ると勝利し、誤入力や早押しによるファウルが2回になると敗北するルールが確認できます。</p><p>合図には、通常の早押しのほか、フェイントや連打・複数ボタン入力といった変化があります。</p></section>
-<figure class="art"><img alt="実プレイ画面ではない、Draw or Dieのタイトルカード" src="../images/placeholders/draw_or_die.png"/><figcaption>仮のタイトルカード。ゲーム中のスクリーンショットは差し替え予定です。</figcaption></figure>
-<section class="section"><h2>担当した内容</h2><p><strong>企画と操作部分</strong>を担当しました。ゲームの全機能・合図生成アルゴリズム・全コードを一人で実装したという意味ではありません。担当は企画と操作部分であり、合図生成やゲーム全体の実装を本人単独の成果としては記載していません。</p></section>
-<section class="section"><h2>作品資料</h2><p><a href="https://github.com/higa-shunnosuke/2025GameJam_TeamE" rel="noopener noreferrer" target="_blank">チームのGitHubリポジトリを見る</a></p><p class="note">作品の発想に既存ゲームの影響はありますが、サイトでは第三者のキャラクターやロゴを流用せず、作品独自の名前と遊び方を説明しています。</p></section>
-<footer class="foot">本ページは応募用ポートフォリオの制作途中版です。担当範囲は本人の申告を基準とし、実機動作を確認したものではありません。</footer></main></body></html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Draw or Die：1年次ゲームジャム制作の2人対戦早押しゲーム。企画と操作部分を担当。ルール、操作、実際の勝敗画面を紹介します。" name="description"/>
+<title>Draw or Die｜企画・操作設計 | Portfolio</title>
+<link href="../css/works_extra.css" rel="stylesheet"/>
+</head>
+<body>
+<main class="container">
+<a class="back" href="../index.html">← 作品一覧へ戻る</a>
+<header class="head">
+<p class="tag">GAME DEVELOPMENT / GAME JAM 01</p>
+<h1>Draw or Die</h1>
+<p>相手より早く正しいボタンを入力する、2人対戦の早押しゲーム。西部劇風の早撃ち対決に、フェイント・連打・順番入力など、合図によって変化する操作を組み合わせました。</p>
+</header>
+<div class="facts">
+<div class="fact"><p class="label">制作形態</p><p>1年次ゲームジャム / チーム制作</p></div>
+<div class="fact"><p class="label">使用技術</p><p>C++ / DxLib</p></div>
+<div class="fact"><p class="label">本人担当</p><p>企画・操作部分</p></div>
+</div>
+<figure class="art dod-title">
+<a href="../images/draw_or_die/title.png" target="_blank" rel="noopener noreferrer" aria-label="Draw or Dieタイトル画面を拡大"><img src="../images/draw_or_die/title.png" alt="夕焼けの西部劇風背景にDraw or Dieとスタート、ヘルプ、エンドが表示されたタイトル画面" fetchpriority="high"/></a>
+<figcaption>タイトル画面。西部劇風の世界観を伝えるビジュアルです（チーム作品の画面）。</figcaption>
+</figure>
+<section class="section" aria-labelledby="dod-rules-title">
+<h2 id="dod-rules-title">ゲームの遊び方</h2>
+<p>2人が画面に出る合図に反応し、相手より早く正しいボタンを入力します。<strong>先に3ポイント取った側が勝利</strong>。合図前の早押しや誤入力ではファウルとなり、<strong>2ファウルで敗北</strong>します。ボタンを押さないことが正解になるフェイントもあります。</p>
+<div class="dod-rule-points" aria-label="対戦ルールの要点">
+<div><span>WIN CONDITION</span><strong>先に3点</strong><small>ポイント獲得で勝利</small></div>
+<div><span>FOUL LIMIT</span><strong>2回</strong><small>早押し・誤入力で敗北</small></div>
+<div><span>INPUT PATTERN</span><strong>4種類＋フェイント</strong><small>連打・早押し・順番入力など</small></div>
+</div>
+<div class="dod-screens dod-screens--two">
+<figure class="dod-screen"><a href="../images/draw_or_die/rules.png" target="_blank" rel="noopener noreferrer" aria-label="ルール説明画面を拡大"><img src="../images/draw_or_die/rules.png" alt="先に3ポイント取ると勝利、同時入力は引き分け、点数が入らないことを説明するヘルプ画面" loading="lazy"/></a><figcaption>基本ルール：3ポイント先取と引き分けの扱い</figcaption></figure>
+<figure class="dod-screen"><a href="../images/draw_or_die/controls.png" target="_blank" rel="noopener noreferrer" aria-label="操作説明画面を拡大"><img src="../images/draw_or_die/controls.png" alt="A・B・X・Yのボタンと4種類の合図、フェイントを紹介する操作説明画面" loading="lazy"/></a><figcaption>操作説明：合図によって変わる入力方法</figcaption></figure>
+</div>
+<details class="dod-details"><summary>誤入力・ファウルに関するヘルプ画面を見る</summary>
+<figure class="dod-screen"><a href="../images/draw_or_die/foul_rules.png" target="_blank" rel="noopener noreferrer" aria-label="ファウルのルール画面を拡大"><img src="../images/draw_or_die/foul_rules.png" alt="合図より先に押す、違うボタンを押すとファウル、2回ファウルすると敗北するという説明画面" loading="lazy"/></a><figcaption>フライングや誤入力へのペナルティ</figcaption></figure>
+</details>
+</section>
+<section class="section" aria-labelledby="dod-play-title">
+<h2 id="dod-play-title">実際の対戦画面</h2>
+<p>スタートから判定、ラウンドの結果まで、実際のゲーム画面で紹介します。画像を選択すると原寸で開きます。</p>
+<div class="dod-screens dod-screens--two">
+<figure class="dod-screen"><a href="../images/draw_or_die/start.png" target="_blank" rel="noopener noreferrer" aria-label="対戦開始画面を拡大"><img src="../images/draw_or_die/start.png" alt="西部劇風の夕焼け背景と対峙する2人のシルエット、中央にSTARTが表示される対戦開始画面" loading="lazy"/></a><figcaption>対戦開始：合図が出る前の緊張感</figcaption></figure>
+<figure class="dod-screen"><a href="../images/draw_or_die/win.png" target="_blank" rel="noopener noreferrer" aria-label="勝利演出画面を拡大"><img src="../images/draw_or_die/win.png" alt="1P WINの大きな文字と片膝をつく対戦相手が描かれた勝利演出画面" loading="lazy"/></a><figcaption>勝利時：1P WINの結果表示</figcaption></figure>
+<figure class="dod-screen"><a href="../images/draw_or_die/foul.png" target="_blank" rel="noopener noreferrer" aria-label="ファウル演出画面を拡大"><img src="../images/draw_or_die/foul.png" alt="1P FOULと大きく表示され、入力ミスを知らせる対戦画面" loading="lazy"/></a><figcaption>ファウル時：誤入力を明確に伝える</figcaption></figure>
+<figure class="dod-screen"><a href="../images/draw_or_die/results.png" target="_blank" rel="noopener noreferrer" aria-label="リザルト画面を拡大"><img src="../images/draw_or_die/results.png" alt="1Pと2Pの各ラウンドにおける勝敗とスコアを表示したリザルト画面" loading="lazy"/></a><figcaption>リザルト：ラウンドごとの結果を振り返る</figcaption></figure>
+</div>
+</section>
+<section class="section" aria-labelledby="dod-role-title">
+<h2 id="dod-role-title">本人の担当と企画上の特徴</h2>
+<div class="dod-role-grid">
+<div class="dod-role"><h3>本人が担当したこと</h3>
+<p><strong>ゲームの企画と操作部分</strong>を担当しました。複数の合図に応じて判断と入力が変わる遊びを、2人対戦の早撃ちゲームとしてまとめています。</p>
+<p class="note">本ページの画像はチームの完成画面です。グラフィック、全システム、結果画面のプログラムを本人単独で制作したという意味ではありません。</p>
+</div>
+<div class="dod-role"><h3>遊びの設計</h3>
+<p>単に速く押すだけでなく、合図の種類を見分けることが必要になる設計です。フェイントでは押さない判断が正解になるため、<strong>反射神経と判断</strong>の両方が問われます。</p>
+</div>
+</div>
+</section>
+<section class="section" aria-labelledby="dod-source-title">
+<h2 id="dod-source-title">制作資料</h2>
+<p>チームのソース・ゲームデータはGitHubから確認できます。</p>
+<p><a href="https://github.com/higa-shunnosuke/2025GameJam_TeamE" rel="noopener noreferrer" target="_blank">Draw or DieのチームGitHubリポジトリを見る</a></p>
+</section>
+<footer class="foot">本ページでは、実際のプレイ画像と本人の企画・操作担当を区別して掲載しています。</footer>
+</main>
+</body>
+</html>

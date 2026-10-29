@@ -1,9 +1,10 @@
 <!DOCTYPE html>
+
 <html lang="ja">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<meta content="破戒僧サバイバーの企画・数値設計。武器DPSの検討から敵HPの段階設計、敵出現制御、チーム制作での担当まで。" name="description"/>
+<meta content="破戒僧サバイバー：武器性能・敵HP・出現制御を調整した4人制作ゲーム。序盤の一撃撃破、敵HPの6段階化、企画時の試算と実装の差を紹介。" name="description"/>
 <title>破戒僧サバイバー｜数値設計と難易度調整</title>
 <link href="../css/work2_01.css" rel="stylesheet"/>
 </head>
@@ -13,7 +14,7 @@
 <div class="hero-copy">
 <p class="eyebrow">GAME PLANNING · GAME BALANCE</p>
 <h1>破戒僧サバイバー</h1>
-<p class="lead">武器の成長による爽快感と、敵の増加による緊張感を両立させるために、攻撃性能と敵の耐久力を数値から設計しました。</p>
+<p class="lead">序盤は一撃で倒せる爽快感、終盤は押し寄せる敵の緊張感。武器性能・敵HP・出現頻度と方向を調整して、成長と難易度の両立を目指しました。</p><p class="hero-contribution"><strong>本人担当：</strong>企画、武器・敵の数値バランス、敵の出現制御の一部実装</p>
 <dl class="meta-grid">
 <div><dt>制作</dt><dd>2025年4月〜7月</dd></div>
 <div><dt>人数</dt><dd>4人チーム</dd></div>
@@ -25,7 +26,17 @@
 <figure class="hero-image"><img alt="破戒僧サバイバーのタイトル画面。夜空と草原の背景にプレイ、チュートリアル、クレジットの項目を配置した画面。" src="../images/work2_01/タイトル画面.png"/><figcaption>実際のタイトル画面</figcaption></figure>
 </div></header>
 <main class="container">
-<nav aria-label="このページ内の目次" class="page-nav"><a href="#videos">紹介・プレイ動画</a><a href="#overview">作品・担当</a><a href="#design">設計課題</a><a href="#comparison">数値の検討</a><a href="#code">実装と調整</a><a href="#spawn">敵の出現</a><a href="#reflection">振り返り</a></nav><section aria-labelledby="videos-heading" class="section" id="videos">
+<nav aria-label="このページ内の目次" class="page-nav"><a href="#design-summary">設計の要点</a><a href="#videos">紹介・プレイ動画</a><a href="#overview">作品・担当</a><a href="#design">設計課題</a><a href="#comparison">数値の検討</a><a href="#code">実装と調整</a><a href="#spawn">敵の出現</a><a href="#reflection">振り返り</a></nav><section aria-labelledby="design-summary-title" class="section summary-section" id="design-summary">
+<div class="section-heading"><p class="eyebrow">00 / DESIGN AT A GLANCE</p>
+<h2 id="design-summary-title">最初の一撃から、終盤の敵の圧力まで</h2>
+<p>初期の手応えと、ゲームが進むほど厳しくなる状況を、数値と敵出現の両方から設計しました。</p></div>
+<div class="balance-fact-grid">
+<article class="balance-fact surface"><p class="balance-fact-type">通常敵 / ゲーム序盤</p><strong>HP 10</strong><p>敵のHPは開始時の実装値</p></article>
+<article class="balance-fact surface"><p class="balance-fact-type">初期武器 / 鞭 Lv.1</p><strong>威力 10</strong><p>命中すれば初期敵を一撃で撃破</p></article>
+<article class="balance-fact surface"><p class="balance-fact-type">通常敵の耐久力</p><strong>6段階</strong><p>HP10〜60と画像を対応づける</p></article>
+</div>
+<div class="design-summary-note"><strong>コードから確認できる範囲：</strong>通常敵に鞭の攻撃が命中した場合の必要攻撃回数は1回です。出現から撃破までの実時間や、全ビルドでの難易度を実測したものではありません。<a href="#code">実装と企画案の違いを見る</a></div>
+</section><section aria-labelledby="videos-heading" class="section" id="videos">
 <div class="section-heading"><p class="eyebrow">VIDEO GALLERY</p><h2 id="videos-heading">紹介動画・プレイ動画</h2><p>作品の概要と、ゲームプレイの様子を動画で紹介しています。</p></div>
 <div class="game-video-grid">
 <article class="game-video-card surface">
@@ -40,13 +51,31 @@
 </article>
 </div>
 <p class="video-supplement">埋め込み動画が表示できない場合は、YouTubeリンクから確認できます。PDF版でもURLを参照できます。</p>
+<div class="download-block surface">
+<div class="download-block-head"><p class="eyebrow">TRIAL BUILD</p><h3>試遊用ビルド</h3></div>
+<div class="download-block-body">
+<div>
+<p>採用担当者向けに、Windows向けの試遊版ビルドも掲載しています。動画とあわせて、序盤の敵処理や成長の流れを直接確認できます。</p>
+<a class="download-button" href="https://drive.google.com/file/d/1g_y7519TK7OE9KfEnaHHcD4dzfxPhtEU/view?usp=drivesdk" rel="noopener noreferrer" target="_blank">Google Driveで試遊版を見る</a>
+<p class="download-url">https://drive.google.com/file/d/1g_y7519TK7OE9KfEnaHHcD4dzfxPhtEU/view?usp=drivesdk</p>
+</div>
+<div>
+<p class="download-meta-title">配布ファイル</p>
+<ul class="download-meta">
+<li><strong>ファイル名：</strong><code>GP2_4gati_0714.zip</code></li>
+<li><strong>対象環境：</strong>Windows向け試遊版</li>
+<li><strong>備考：</strong>ZIPを展開後、フォルダ内の実行ファイルから起動します。</li>
+</ul>
+</div>
+</div>
+</div>
 </section>
 <section class="section" id="overview">
 <div class="section-heading"><p class="eyebrow">01 / PROJECT</p><h2>作品と担当範囲</h2></div>
 <div class="two-col">
 <div class="surface text-content"><h3>ゲーム概要</h3>
-<p>迫ってくる敵を避けながら自動攻撃で倒し、経験値を集めて武器やスキルを強化するゲームです。初期企画では5分間の生存を想定し、後期の実装には難易度進行を圧縮する時間設定が残っています。</p>
-<p>プレイヤーの操作は主に移動であり、武器の発動方向・範囲と、敵との距離を意識して立ち回ることを狙いました。</p>
+<p>迫ってくる敵を避けながら自動攻撃で倒し、経験値で武器やスキルを強化する2Dサバイバー系ゲームです。初期企画では5分間を想定していましたが、後期のソースではクリア時間を3分に設定しています。</p>
+<p>操作は主に移動。敵との距離や武器の攻撃範囲を意識して立ち回る体験を目指しました。</p>
 </div>
 <div class="surface text-content"><h3>本人の担当</h3>
 <p><strong>主担当：</strong>企画、武器の威力・クールタイム、敵HP・出現間隔・出現位置の調整、敵出現ロジックの一部、全体バランス。</p>
@@ -57,9 +86,9 @@
 <section class="section" id="design">
 <div class="section-heading"><p class="eyebrow">02 / DESIGN QUESTION</p><h2>「強くなる」体験を、どう維持するか</h2><p>課題は敵HPをただ増やすことではなく、育成の成果を感じながら終盤も緊張感を保てる難易度曲線を作ることでした。</p></div>
 <div class="step-grid">
-<article class="step"><div class="step-id">01</div><h3>序盤は倒せる手応え</h3><p>初期装備の鞭（威力10）で敵を一撃で倒せることを、初期の難易度目標に設定しました。</p></article>
-<article class="step"><div class="step-id">02</div><h3>武器ごとの実戦性能</h3><p>威力÷CTだけでなく、当てに行く必要がある鞭・EMPの命中しやすさと、育成の偏りを考慮しました。</p></article>
-<article class="step"><div class="step-id">03</div><h3>敵の耐久と密度</h3><p>敵HP・生成間隔・出現位置を組み合わせ、終盤に向けて敵の圧力が上がる設計を検討しました。</p></article>
+<article class="step"><div class="step-id">01</div><h3>序盤は倒せる手応え</h3><p>序盤は鞭1発で通常敵を倒せる手応えを重視。実装では通常敵HP10に対し、初期鞭の威力を10にしています。</p></article>
+<article class="step"><div class="step-id">02</div><h3>武器ごとの実戦性能</h3><p>威力÷クールタイムだけでなく、鞭やEMPの命中条件、特定武器への集中強化と分散育成の違いを考慮しました。</p></article>
+<article class="step"><div class="step-id">03</div><h3>敵の耐久と密度</h3><p>時間経過に合わせて敵HP・生成間隔・出現位置を調整し、終盤の難易度を単純なHP増加だけに依存させない構成を目指しました。</p></article>
 </div>
 </section>
 <section class="section" id="comparison">
@@ -67,7 +96,7 @@
 <div class="method-summary surface">
 <div><small>スタート時</small><strong>鞭 Lv.1</strong><span>威力10、CT2秒を基礎とする</span></div>
 <div><small>育成パターン</small><strong>特化型 / 分散型</strong><span>武器の強化方針を2通り想定</span></div>
-<div><small>HPの初期目標</small><strong>0秒 6 → 60秒 10</strong><span>最初の一撃で倒しやすい想定</span></div>
+<div><small>設計時のHP試算（未採用）</small><strong>6 → 10</strong><span>0秒から60秒にかけての目標値。最終実装とは異なる</span></div>
 </div>
 <figure class="chart-card">
 <div class="chart-head"><h3>当時比較したHP成長モデル</h3><p>チャット内の試算値。完成版の実測値・採用済み数値ではありません。</p></div>
@@ -75,17 +104,31 @@
 <div class="legend"><span><i class="line-line"></i>β = 0.05：より早く増加</span><span><i class="line-dash"></i>β = 0.02：比較的緩やか</span></div>
 <figcaption>当時の相談記録に記載された計算結果を可視化。0〜60秒は両案ともHP6→10。その後の上がり方を比較しました。実機のキルタイム測定結果ではありません。</figcaption>
 </figure>
-<div class="takeaway surface"><h3>試算から判断したかったこと</h3><p>強化を1武器に集中した場合と複数武器をバランスよく育てた場合の差を考慮し、どちらでも序盤の敵を倒せることと、終盤の敵密度に負けない火力を両立できるかを検討しました。</p><p>ただし、武器の命中率やレベルアップ速度は仮定を含むため、このモデル単独で完成版の難易度を証明できるわけではありません。</p></div>
+<div class="takeaway surface"><h3>試算から判断したかったこと</h3><p>1武器へ強化を集中した場合と、複数武器を均等に育てた場合を想定し、敵を倒せる手応えと、終盤の敵の物量に対抗できる火力を検討しました。</p><p>命中率・レベルアップ速度などには仮定があります。図は設計案を比較するための試算であり、最終ゲームの性能や撃破時間を測定したものではありません。</p></div>
 </section>
 <section class="section" id="code">
-<div class="section-heading"><p class="eyebrow">04 / IMPLEMENTATION</p><h2>現行ソースではHPを段階化</h2><p>GitHubの <code>EnemyBase::SetHitPoint()</code> を確認すると、相談時のβモデルとは別の計算式を使い、敵HPを6段階に分けています。</p></div>
+<div class="section-heading"><p class="eyebrow">04 / IMPLEMENTATION</p><h2>実装では、HPを6段階に整理</h2><p>試算した曲線をそのまま採用せず、時間に応じて通常敵のHPと見た目を切り替える構成にしました。</p></div>
 <div class="implementation-layout">
-<figure class="code-image surface"><img alt="EnemyBase::SetHitPointのコード。時間をもとにenemynumberを計算し、値の範囲で敵HPと画像を切り替えている。" loading="lazy" src="../images/work2_01/工夫HP.png"/><figcaption>HP段階分けを実装したC++コードの一部（本人の制作資料から）</figcaption></figure>
-<div class="surface impl-summary"><p class="minor">実装されている敵HPの段階</p><div aria-label="HPは10、20、30、40、50、60の6段階" class="hp-bands"><span>10</span><span>20</span><span>30</span><span>40</span><span>50</span><span>60</span></div><h3>HPと見た目を連動</h3><p>途中の段階を10刻みとし、段階に対応する敵画像を切り替えています。</p><p>同じ外見の敵を同じ攻撃回数で倒せないと違和感があるという指摘を受け、数値だけでなく見た目の分かりやすさも考慮しました。</p></div>
-</div>
-<div class="note"><strong>試算と実装の差：</strong>β=0.02／0.05の式はそのまま使われていません。また、ソースの序盤用の式には整数除算があり、意図した「HP6→10」の連続増加にはなっていません。したがって、試算のHP曲線を完成版の成果として掲載しません。</div>
-<h3 class="subhead">武器性能も、企画時から調整</h3>
-<p class="small-intro">下表は設計表の初期値と、実装時の各武器クラス <code>SetStatus()</code> のLv.1設定を照合したものです。これは調整履歴を直接復元した表ではなく、異なる時点の資料比較です。</p>
+<article class="surface impl-summary">
+<p class="minor">通常敵のHP（実装コードから確認）</p>
+<div aria-label="通常敵のHPは10、20、30、40、50、60の6段階" class="hp-bands"><span>10</span><span>20</span><span>30</span><span>40</span><span>50</span><span>60</span></div>
+<h3>HPと見た目を対応させる</h3>
+<p>HPの段階ごとに敵の画像も切り替えます。「同じ見た目なのに同じダメージで倒せないのは違和感がある」という指摘を踏まえ、強さを見た目から理解しやすくすることを意識しました。</p>
+</article>
+<article class="surface implementation-proof">
+<p class="minor">序盤の成立条件 / ソース確認</p>
+<h3>初期の通常敵は、鞭1回の命中で倒せる</h3>
+<div class="damage-formula"><span>敵HP <strong>10</strong></span><b>−</b><span>鞭のダメージ <strong>10</strong></span><b>＝</b><span class="remaining-hp">残HP <strong>0</strong></span></div>
+<p>初期鞭の攻撃力は10、序盤の通常敵HPは10です。命中すると攻撃力分だけHPが減り、0以下になると撃破されます。ただし、命中までの時間は敵との距離や攻撃タイミングで変わります。</p>
+</article>
+</div><details class="code-evidence surface">
+<summary>実装コードと計算上の注意点を確認する</summary>
+<figure class="code-image"><img alt="時間に応じた数値から通常敵のHPを10〜60に振り分けるEnemyBase::SetHitPointのC++コード" loading="lazy" src="../images/work2_01/工夫HP.png"/><figcaption><code>EnemyBase::SetHitPoint()</code> の実装（スクリーンショット）</figcaption></figure>
+<p>序盤のHP計算には整数除算が含まれるため、初期検討の「HP6から10へ滑らかに増加」とは一致しません。上記の「HP10」は完成版コードの分岐処理から確認できる値です。経過時間ごとの敵HPを実測したデータではありません。</p>
+</details>
+<p class="design-implementation-difference"><strong>設計案との違い：</strong>試算したβ=0.02／0.05のHP曲線は最終実装には採用されていません。実装ではHPを6段階に分類しています。</p>
+<h3 class="subhead">武器性能の企画値と実装値を比較</h3>
+<p class="small-intro">企画当時のExcelと、GitHubの各武器クラスにあるLv.1設定を照合しました。同じ武器でも値が異なるため、企画案を固定せずに調整したことが分かります。ただし、各変更の日時や理由を確定できる資料ではありません。</p>
 <div class="table-scroll"><table><thead><tr><th scope="col">武器</th><th scope="col">企画時（Excel）</th><th scope="col">GitHub mainのLv.1</th><th scope="col">確認できる変更</th></tr></thead><tbody>
 <tr><th scope="row">鞭</th><td>威力10 / CT 2秒</td><td>威力10 / CT 2秒</td><td>基礎値は共通</td></tr>
 <tr><th scope="row">杖</th><td>威力3 / CT 1秒</td><td>威力5 / CT 1秒</td><td>基礎威力を変更</td></tr>
@@ -95,18 +138,18 @@
 <p class="footnote">※ CTはクールタイム。効果範囲・同時発射数・命中率も実際の攻撃性能に影響するため、威力÷CTのみで武器間の優劣を断定していません。</p>
 </section>
 <section class="section" id="spawn">
-<div class="section-heading"><p class="eyebrow">05 / ENEMY SPAWNING</p><h2>出現間隔と位置でプレッシャーを設計</h2><p>敵HPだけでなく、出現数と出現方向でも難易度を調整しました。</p></div>
+<div class="section-heading"><p class="eyebrow">05 / ENEMY SPAWNING</p><h2>出現間隔と位置でプレッシャーを設計</h2><p>通常敵の生成間隔を短くするだけでなく、発生方向に重みを付けて戦況が変わるようにしました。</p></div>
 <div class="two-col">
-<article class="surface text-content"><h3>段階的な出現頻度</h3><p>時間経過によって通常敵の生成間隔を短くする仕組みを実装。一定間隔での増援隊列も加え、敵に囲まれる場面を作っています。</p><p>実装では一度に3体を生成する設定と、最大敵数の上限も確認できます。</p></article>
-<article class="surface text-content"><h3>出現方向の重み付け</h3><p>画面周囲を9エリアに分け、中央を避けつつ画面外へ敵を出します。初期は左右を重点とし、直前に使ったエリアの重みを下げ、別方向へ出やすくする処理を入れました。</p><p>完全な一様乱数ではなく、配置傾向に変化を付ける意図です。</p></article>
+<article class="surface text-content"><h3>段階的な出現頻度</h3><p>時間経過に応じて通常敵の生成間隔を段階的に短縮し、一定間隔の増援隊列も設定しました。敵の増え方で終盤の緊張感を作る意図です。</p><p>実装には、通常敵を1回につき3体生成する設定があります。</p></article>
+<article class="surface text-content"><h3>出現方向の重み付け</h3><p>画面周辺の9エリアから出現方向を選び、初期は左右を重点化。直前に使ったエリアの重みを下げることで、同じ方向に偏り続けるのを抑えています。</p><p>位置を完全な一様乱数にせず、囲まれ方に変化を付ける設計です。</p></article>
 </div>
 <figure class="supplement surface"><img alt="EnemyManagerのBaseRaito配列。画面外の左右エリアに大きな出現比率を割り当て、他は0として初期化した実装例。" loading="lazy" src="../images/work2_01/工夫配置ヘッダ .png"/><figcaption>出現位置の初期重みを持つ配列（コード資料）</figcaption></figure>
 </section>
 <section class="section" id="reflection">
-<div class="section-heading"><p class="eyebrow">06 / REFLECTION</p><h2>振り返りと検証できていないこと</h2></div>
+<div class="section-heading"><p class="eyebrow">06 / REFLECTION</p><h2>設計で学んだこと・今後の検証</h2></div>
 <div class="two-col">
-<div class="surface text-content"><h3>得られたこと</h3><p>「どの武器・アイテム構成でも極端に遊びにくくならないこと」「成長しても敵の圧力が残ること」といったプレイヤー体験の条件から、武器・敵・出現パターンの数値を考える方法を学びました。</p><p>また、同じ見た目の敵は同じ耐久力である方が理解しやすいという指摘を通して、ゲームバランスと情報の伝わり方が結び付いていると実感しました。</p></div>
-<div class="surface text-content"><h3>今後の検証課題</h3><p>実際のビルドごとの平均キルタイム、選択武器の偏り、クリア率の定量記録は確認できていません。また、設計時の曲線と最終実装の間には差があります。</p><p>そのため、本ページでは「全ビルドで狙い通りの難易度を実証した」とは主張せず、設計判断と確認できる実装を分けて示しています。</p></div>
+<div class="surface text-content"><h3>得られたこと</h3><p>「成長で強くなる実感」と「終盤の緊張感」という体験上の目標から逆算して、武器・敵HP・出現条件の数値を検討しました。</p><p>また、耐久力が変わるなら敵の見た目も変えるなど、数値をプレイヤーにどう伝えるかまで設計する重要性を学びました。</p></div>
+<div class="surface text-content"><h3>今後の検証課題</h3><p>特化型・分散型ごとの平均撃破時間、クリア率、実際の命中率を揃えた比較テストは実施していません。試算と完成版コードの数値にも違いがあります。</p><p>そのため、数値設計の判断過程と実装できた仕様を示し、狙いどおりのバランスを定量的に実証したとは主張していません。</p></div>
 </div>
 <details class="source-details"><summary>このページの根拠資料と位置づけ</summary>
 <p>設計時資料：<code>ヴァンサバ仕様リスト.xlsx</code>、2025年4〜5月の武器DPS・敵HPに関する本人の相談記録（計算補助として生成AIを使用）。実装確認：<code>kbc_tgs2025_4gati</code> の <code>main</code>（<code>EnemyBase.cpp</code>、<code>EnemyManager.cpp/.h</code>、各武器 <code>SetStatus()</code>）。</p>

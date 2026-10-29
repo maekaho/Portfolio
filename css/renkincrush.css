@@ -113,3 +113,7 @@
 @media(max-width:880px){.showcase-two-col{grid-template-columns:1fr}.showcase-feature-card{padding:18px}.showcase-two-col .primary-shot img{max-height:none}}
 @media(max-width:480px){.feature-showcase{padding:24px 16px}.showcase-feature-card{padding:14px}.showcase-thumb-row{grid-template-columns:1fr;gap:0}.showcase-feature-card h3{font-size:1.1rem}}
 @media print{.showcase-two-col{grid-template-columns:1fr 1fr}.showcase-feature-card{page-break-inside:avoid}.showcase-evidence{print-color-adjust:exact}}
+
+
+/* v17: downloadable trial build card */
+.download-section .section-heading{margin-bottom:18px}.download-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.download-card{border:1px solid var(--line);border-radius:16px;padding:22px;background:#fff}.download-label{font-size:.78rem;letter-spacing:.11em;font-weight:800;text-transform:uppercase;color:var(--accent);margin:0 0 7px}.download-card h3{margin:0 0 10px}.download-card ul{margin:0;padding-left:1.2em}.download-url{font-size:.82rem;color:var(--muted);overflow-wrap:anywhere;margin:12px 0 0}.download-note{font-size:.83rem;color:var(--muted);margin:14px 2px 0}@media(max-width:760px){.download-grid{grid-template-columns:1fr}}

@@ -1,13 +1,31 @@
 <!DOCTYPE html>
-<html lang="ja"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="OpenGL技術作品：OBJモデル読み込み、テクスチャの設定、クォータニオンによる回転を自作。" name="description"/><title>OpenGL：OBJ・テクスチャ・クォータニオン | Portfolio</title><link href="../css/works_extra.css" rel="stylesheet"/></head><body><main class="container">
+<html lang="ja"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="OpenGL技術作品。OBJ読込、テクスチャ描画、クォータニオンによる回転を実装。実行画面と約38秒の動作動画を掲載。" name="description"/><title>OpenGL：OBJ・テクスチャ・クォータニオン | Portfolio</title><link href="../css/works_extra.css" rel="stylesheet"/></head><body><main class="container">
 <a class="back" href="../index.html">← 作品一覧へ戻る</a><header class="head"><p class="tag">TECHNICAL PROJECT / 3D GRAPHICS</p><h1>OpenGL 3D描画・操作実験</h1><p>C++とOpenGLを使い、3Dモデルの読み込み、テクスチャ描画、クォータニオンによる回転を実装した技術学習プロジェクトです。完成ゲームではなく、3D描画の処理を理解し、組み合わせるために制作しました。</p></header>
 <div class="facts"><div class="fact"><p class="label">開発環境</p><p>C++ / OpenGL / FreeGLUT</p></div><div class="fact"><p class="label">本人が主に実装</p><p>OBJ読込用ヘッダ・テクスチャ読み込み・クォータニオン計算</p></div><div class="fact"><p class="label">位置付け</p><p>個人技術学習</p></div></div>
+<section class="section" id="demo" aria-labelledby="opengl-demo-title">
+<h2 id="opengl-demo-title">実行画面・動作動画</h2>
+<p>格子状の床と、数字のテクスチャを貼った立方体を表示した実行画面です。動画では、視点や立方体の向きが変わる様子を確認できます。</p>
+<div class="opengl-gallery">
+<figure class="art"><a href="../images/opengl/dice_tilted.png" target="_blank" rel="noopener" aria-label="傾いた立方体の実画面を拡大"><img src="../images/opengl/dice_tilted.png" alt="格子状の床に置かれた数字付きの立方体が斜めに傾いたOpenGL実行画面" loading="eager"/></a><figcaption>立方体が傾いた状態。テクスチャと姿勢の描画を確認できます。</figcaption></figure>
+<figure class="art"><a href="../images/opengl/dice_upright.png" target="_blank" rel="noopener" aria-label="立方体の別の姿勢を拡大"><img src="../images/opengl/dice_upright.png" alt="格子状の床の上で立方体の異なる面が見えているOpenGL実行画面" loading="lazy"/></a><figcaption>別の姿勢から見た表示。画像をクリックすると拡大できます。</figcaption></figure>
+</div>
+<div class="opengl-demo-grid">
+<div class="opengl-video-frame">
+<video controls playsinline preload="metadata" poster="../images/opengl/dice_tilted.png" aria-label="OpenGLの立方体とカメラ操作の実行動画（約38秒）"><source src="../videos/opengl_demo.mp4" type="video/mp4"/>このブラウザでは動画を再生できません。Google Driveのリンクをご利用ください。</video>
+</div>
+<div class="opengl-demo-copy"><p class="tag">DEMONSTRATION VIDEO</p><h3>OpenGL動作動画（約38秒）</h3>
+<p>立方体と床の表示、視点・姿勢が変わる場面を収録しています。サイト内で再生できない場合はGoogle Driveから確認できます。</p>
+<a class="opengl-video-link" href="https://drive.google.com/file/d/1RyZ7G8Ix2D_W6rXiyjC_HClbCegUuC2b/view?usp=drivesdk" target="_blank" rel="noopener noreferrer">Google Driveで動画を見る</a>
+<p class="opengl-demo-note">※ 動画は表示結果の記録です。OBJ読み込み処理やシェーダー内部の実装手順そのものを映したものではありません。コードの説明は下の技術欄に分けています。</p>
+</div>
+</div>
+</section>
 <section class="section"><h2>自分で取り組んだ技術</h2><ul>
 <li><strong>OBJモデル読み込み：</strong>OBJ形式のモデルを読み込むためのヘッダを作成し、頂点位置・法線・UV座標を参照する描画処理へつなげました。</li>
 <li><strong>テクスチャ読み込み：</strong>画像データを読み込み、RGB/RGBAの形式を判定してOpenGLのテクスチャへ転送する処理を実装しました。画像のデコードには<code>stb_image</code>を利用しています。</li>
 <li><strong>クォータニオンによる回転：</strong>角度・回転軸からクォータニオンを作り、積によって姿勢を更新し、3Dモデルの回転に反映しました。</li>
 <li><strong>操作・挙動：</strong>マウスドラッグで視点を操作し、左右キーで移動と回転、スペースキーで投射・着地後の減速を試しました。</li></ul></section>
-<figure class="art"><img alt="OpenGL技術作品を示す仮画像。実際の描画結果ではありません" src="../images/placeholders/opengl.png"/><figcaption>仮画像。実際の動作画面は未追加です。</figcaption></figure>
+
 <section class="section"><h2>クォータニオンの合成処理</h2><p>角度と軸から姿勢を生成し、追加回転を既存の回転と合成する処理です。回転の順序を意識しながら3Dオブジェクトを操作する実験を行いました。</p><pre class="code">Quaternion Mul(Quaternion a, Quaternion b)
 {
     return {
